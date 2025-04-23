@@ -78,7 +78,7 @@ def run_prediction_from_file(customer_id: str, input_file: str, output_file: str
 
         # Đọc dữ liệu để phân tích
         try:
-            result_df = pd.read_csv(result_file, encoding='utf-8-sig')
+            result_df = pd.read_csv(result_file, sep=";", encoding='utf-8-sig')
 
             # Phân tích kết quả
             total_samples = len(result_df)

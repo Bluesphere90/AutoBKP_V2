@@ -57,7 +57,7 @@ def read_input_data(file_path: str) -> pd.DataFrame:
 
         for encoding in encodings:
             try:
-                df = pd.read_csv(file_path, encoding=encoding)
+                df = pd.read_csv(file_path, sep=";", encoding=encoding)
                 logger.info(f"Đọc thành công với encoding: {encoding}")
                 return df
             except UnicodeDecodeError:

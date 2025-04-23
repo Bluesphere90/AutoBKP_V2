@@ -809,12 +809,12 @@ class ModelTrainer:
 
         # Đọc dữ liệu huấn luyện
         try:
-            train_df = pd.read_csv(train_file, encoding='utf-8-sig')
+            train_df = pd.read_csv(train_file, sep=";", encoding='utf-8-sig')
             logger.info(f"Đã đọc tập huấn luyện: {len(train_df)} dòng")
         except Exception as e:
             logger.error(f"Lỗi khi đọc tập huấn luyện: {str(e)}")
             try:
-                train_df = pd.read_csv(train_file, encoding='latin1')
+                train_df = pd.read_csv(train_file, sep=";", encoding='latin1')
                 logger.info(f"Đã đọc tập huấn luyện với encoding latin1: {len(train_df)} dòng")
             except Exception as e2:
                 logger.error(f"Không thể đọc tập huấn luyện: {str(e2)}")
@@ -824,12 +824,12 @@ class ModelTrainer:
         test_df = None
         if test_file:
             try:
-                test_df = pd.read_csv(test_file, encoding='utf-8-sig')
+                test_df = pd.read_csv(test_file, sep=";", encoding='utf-8-sig')
                 logger.info(f"Đã đọc tập kiểm tra: {len(test_df)} dòng")
             except Exception as e:
                 logger.error(f"Lỗi khi đọc tập kiểm tra: {str(e)}")
                 try:
-                    test_df = pd.read_csv(test_file, encoding='latin1')
+                    test_df = pd.read_csv(test_file, sep=";", encoding='latin1')
                     logger.info(f"Đã đọc tập kiểm tra với encoding latin1: {len(test_df)} dòng")
                 except Exception as e2:
                     logger.error(f"Không thể đọc tập kiểm tra: {str(e2)}")

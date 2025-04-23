@@ -406,12 +406,12 @@ def predict_batch(customer_id: str, input_file: str, output_file: str = None,
 
     # Đọc dữ liệu đầu vào
     try:
-        df = pd.read_csv(input_file, encoding='utf-8-sig')
+        df = pd.read_csv(input_file, sep=";", encoding='utf-8-sig')
         logger.info(f"Đã đọc {len(df)} dòng từ {input_file}")
     except Exception as e:
         logger.error(f"Lỗi khi đọc file {input_file}: {str(e)}")
         try:
-            df = pd.read_csv(input_file, encoding='latin1')
+            df = pd.read_csv(input_file, sep=";", encoding='latin1')
             logger.info(f"Đã đọc {len(df)} dòng từ {input_file} với encoding latin1")
         except Exception as e2:
             logger.error(f"Không thể đọc file {input_file}: {str(e2)}")
