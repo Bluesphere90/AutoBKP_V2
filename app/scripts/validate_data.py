@@ -577,6 +577,7 @@ def validate_target_distribution(df: pd.DataFrame, customer_id: str) -> Dict[str
 
         return result
 
+
     def main():
         """Hàm chính để chạy script từ command line"""
         parser = argparse.ArgumentParser(description='Kiểm tra tính hợp lệ của dữ liệu')
