@@ -95,7 +95,7 @@ class PredictionResponse(BaseModel):
 class CustomerConfig(BaseModel):
     column_config: Optional[Dict[str, Any]] = None
     preprocessing_config: Optional[Dict[str, Any]] = None
-    model_config: Optional[Dict[str, Any]] = None
+    model_configuration: Optional[Dict[str, Any]] = None  # Đổi tên từ model_config
     training_config: Optional[Dict[str, Any]] = None
 
 
@@ -173,6 +173,10 @@ async def update_customer_config(customer_id: str, config: CustomerConfig):
         # Chuyển đổi từ model Pydantic sang dict
         config_dict = config.model_dump(exclude_none=True)
 
+        # Sửa lại tên trường nếu cần
+        if 'model_configuration' in config_dict:
+            config_dict['model_config'] = config_dict.pop('model_configuration')
+
         # Cập nhật cấu hình
         updated_config = config_manager.update_customer_config(customer_id, config_dict)
 
@@ -194,6 +198,9 @@ async def get_customer_config(customer_id: str):
     """Lấy cấu hình của khách hàng"""
     try:
         config = config_manager.get_customer_config(customer_id)
+        # Đổi tên trường nếu trả về cho UI
+        if 'model_config' in config:
+            config['model_configuration'] = config.pop('model_config')
         return {"status": "success", "config": config}
     except Exception as e:
         logger.exception(f"Lỗi khi lấy cấu hình: {str(e)}")

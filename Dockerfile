@@ -1,6 +1,18 @@
 FROM python:3.10-slim
 
+# Cài đặt các gói build-essential và rust
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+    && export PATH="$HOME/.cargo/bin:$PATH"
+
 WORKDIR /app
+
+# Cài đặt maturin trước
+RUN pip install --no-cache-dir maturin
 
 # Cài đặt các thư viện cần thiết
 COPY requirements.txt .
