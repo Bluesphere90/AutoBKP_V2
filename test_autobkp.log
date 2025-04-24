@@ -207,3 +207,81 @@ AttributeError: 'ModelTrainer' object has no attribute 'train_hachtoan_model'. D
 2025-04-25 00:42:14,234 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: 'ModelTrainer' object has no attribute 'train_hachtoan_model'
 2025-04-25 00:42:14,234 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
 2025-04-25 00:42:14,234 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-25 00:49:36,177 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-25 00:49:37,277 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-25 00:49:37,279 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej
+2025-04-25 00:49:37,279 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-25 00:49:37,279 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-25 00:49:37,279 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-25 00:49:37,279 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-25 00:49:37,279 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-25 00:49:37,279 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-25 00:49:37,279 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-25 00:49:37,282 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_sample_data.csv
+2025-04-25 00:49:37,282 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-25 00:49:37,282 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-25 00:49:37,282 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_sample_data.csv
+2025-04-25 00:49:37,312 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-25 00:49:37,316 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-25 00:49:37,316 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-25 00:49:37,317 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-25 00:49:37,318 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\validate_result.json
+2025-04-25 00:49:37,318 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-25 00:49:37,319 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-25 00:49:37,319 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-25 00:49:37,319 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-25 00:49:37,320 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_sample_data.csv
+2025-04-25 00:49:37,321 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-25 00:49:37,322 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_sample_data.csv
+2025-04-25 00:49:37,322 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-25 00:49:37,324 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-25 00:49:37,324 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-25 00:49:37,324 - preprocess - INFO - Số lượng lớp: 15
+2025-04-25 00:49:37,326 - preprocess - INFO - Tỷ lệ mất cân bằng: 5.00
+2025-04-25 00:49:37,326 - preprocess - INFO - Lớp hiếm nhất có 3 mẫu (3.00%)
+2025-04-25 00:49:37,326 - preprocess - INFO - Lớp phổ biến nhất có 15 mẫu (15.00%)
+2025-04-25 00:49:37,327 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-25 00:49:37,327 - preprocess - INFO - Số lượng lớp: 9
+2025-04-25 00:49:37,328 - preprocess - INFO - Tỷ lệ mất cân bằng: 8.00
+2025-04-25 00:49:37,328 - preprocess - INFO - Lớp hiếm nhất có 1 mẫu (3.03%)
+2025-04-25 00:49:37,328 - preprocess - INFO - Lớp phổ biến nhất có 8 mẫu (24.24%)
+2025-04-25 00:49:37,328 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-25 00:49:37,329 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-25 00:49:37,329 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-25 00:49:37,340 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_train_20250425_004937.csv
+2025-04-25 00:49:37,340 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_test_20250425_004937.csv
+2025-04-25 00:49:37,341 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_metadata_20250425_004937.json
+2025-04-25 00:49:37,341 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_metadata_20250425_004937.json
+2025-04-25 00:49:37,341 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-25 00:49:37,342 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_train_20250425_004937.csv
+2025-04-25 00:49:37,342 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_test_20250425_004937.csv
+2025-04-25 00:49:37,398 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-25 00:49:37,398 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-25 00:49:37,399 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-25 00:49:37,399 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-25 00:49:37,399 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-25 00:49:37,400 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-25 00:49:37,401 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_train_20250425_004937.csv
+2025-04-25 00:49:37,401 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_nk3c9gej\test_customer_test_20250425_004937.csv
+2025-04-25 00:49:37,404 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-25 00:49:37,404 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-25 00:49:37,405 - train - INFO - Tạo feature extractor...
+2025-04-25 00:49:37,405 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-25 00:49:37,406 - train - INFO - Trích xuất đặc trưng...
+2025-04-25 00:49:37,406 - train - ERROR - Lỗi khi huấn luyện mô hình: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 1641, in train_customer_model
+    trainer.train_hachtoan_model(train_df)
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 442, in train_hachtoan_model
+    X_transformed = self.feature_extractor.fit_transform(X)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\utils\feature_extraction.py", line 222, in fit_transform
+    return self.fit(df, y).transform(df)
+           ^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\utils\feature_extraction.py", line 174, in fit
+    encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'
+2025-04-25 00:49:37,408 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: OneHotEncoder.__init__() got an unexpected keyword argument 'sparse'
+2025-04-25 00:49:37,408 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
+2025-04-25 00:49:37,408 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
