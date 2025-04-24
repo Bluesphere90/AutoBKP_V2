@@ -246,7 +246,7 @@ async def validate_customer_data(
 
 @app.post("/api/customers/{customer_id}/train")
 async def train_customer_model(
-        background_tasks: BackgroundTasks,
+        background_task_manager: BackgroundTasks,  # Đổi tên tham số
         customer_id: str,
         file: UploadFile = File(...),
         incremental: bool = Form(False)
@@ -279,7 +279,7 @@ async def train_customer_model(
         background_tasks[task_id] = task_info
 
         # Khởi động tác vụ nền
-        background_tasks.add_task(train_model_task, task_id, customer_id, temp_file_path)
+        background_task_manager.add_task(train_model_task, task_id, customer_id, temp_file_path)
 
         return TrainingResponse(
             task_id=task_id,
@@ -369,7 +369,7 @@ async def predict_single(customer_id: str, request: PredictionRequest):
 
 @app.post("/api/customers/{customer_id}/predict-batch")
 async def predict_batch(
-        background_tasks: BackgroundTasks,
+        background_task_manager: BackgroundTasks,  # Đổi tên tham số
         customer_id: str,
         file: UploadFile = File(...),
         model_version: str = Form("latest")
@@ -426,7 +426,7 @@ async def predict_batch(
                 background_tasks[task_id]["end_time"] = datetime.now().isoformat()
                 background_tasks[task_id]["error"] = str(e)
 
-        background_tasks.add_task(predict_batch_task, task_id, customer_id, temp_file_path, model_version)
+        background_task_manager.add_task(predict_batch_task, task_id, customer_id, temp_file_path, model_version)
 
         return {
             "task_id": task_id,
