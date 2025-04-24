@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3256e17-2a41-472b-84a3-11316b22456f" name="Changes" comment="Bo sun them cac tinh nang cho mo hinh">
+    <list default="true" id="f3256e17-2a41-472b-84a3-11316b22456f" name="Changes" comment="Bo sung tinh nang huan luyen tang cuong">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/train.py" afterDir="false" />
     </list>
@@ -118,13 +118,22 @@
       <option name="project" value="LOCAL" />
       <updated>1745429741658</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Bo sung tinh nang huan luyen tang cuong">
+      <option name="closed" value="true" />
+      <created>1745431653852</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745431653852</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Tao du an" />
     <MESSAGE value="Them delimiter cho ham read_csv thanh semi colon" />
     <MESSAGE value="Bo sun them cac tinh nang cho mo hinh" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bo sun them cac tinh nang cho mo hinh" />
+    <MESSAGE value="Bo sung tinh nang huan luyen tang cuong" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bo sung tinh nang huan luyen tang cuong" />
   </component>
 </project>
