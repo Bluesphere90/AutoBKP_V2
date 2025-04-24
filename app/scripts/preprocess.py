@@ -362,8 +362,8 @@ def prepare_data_for_training(customer_id: str, input_file: str, output_dir: str
     train_file = os.path.join(output_dir, f"{customer_id}_train_{timestamp}.csv")
     test_file = os.path.join(output_dir, f"{customer_id}_test_{timestamp}.csv")
 
-    train_df.to_csv(train_file, index=False, encoding='utf-8-sig')
-    test_df.to_csv(test_file, index=False, encoding='utf-8-sig')
+    train_df.to_csv(train_file, index=False, encoding='utf-8-sig', sep=";")
+    test_df.to_csv(test_file, index=False, encoding='utf-8-sig', sep=";")
 
     logger.info(f"Đã lưu tập huấn luyện: {train_file}")
     logger.info(f"Đã lưu tập kiểm tra: {test_file}")

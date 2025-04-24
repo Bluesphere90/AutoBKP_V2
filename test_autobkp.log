@@ -1,0 +1,209 @@
+2025-04-25 00:03:46,783 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-25 00:03:56,184 - test_autobkp - ERROR - Lỗi khi import các module: cannot import name 'train_customer_model' from 'app.scripts.train' (D:\Python\AutoBKP_V2\app\scripts\train.py)
+2025-04-25 00:03:56,187 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-25 00:03:56,187 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_71j14pf9
+2025-04-25 00:03:56,188 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-25 00:03:56,188 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-25 00:03:56,188 - test_autobkp - ERROR - Không thể import các module cần thiết
+2025-04-25 00:03:56,189 - test_autobkp - ERROR - ✗ Kiểm tra cấu hình thất bại
+2025-04-25 00:03:56,189 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-25 00:27:46,287 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-25 00:27:47,478 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-25 00:27:47,478 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_ltfkzh99
+2025-04-25 00:27:47,478 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-25 00:27:47,478 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-25 00:27:47,478 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-25 00:27:47,479 - config_manager - INFO - Tạo cấu hình mới cho khách hàng test_customer
+2025-04-25 00:27:47,480 - config_manager - INFO - Đã lưu cấu hình cho khách hàng test_customer
+2025-04-25 00:27:47,480 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-25 00:27:47,480 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-25 00:27:47,480 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-25 00:27:47,480 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-25 00:27:47,483 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_ltfkzh99\test_customer_sample_data.csv
+2025-04-25 00:27:47,483 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-25 00:27:47,483 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-25 00:27:47,484 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_ltfkzh99\test_customer_sample_data.csv
+2025-04-25 00:27:47,510 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-25 00:27:47,532 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-25 00:27:47,533 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-25 00:27:47,533 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-25 00:27:47,534 - test_autobkp - ERROR - Lỗi khi kiểm tra chức năng validate_data: Object of type bool is not JSON serializable
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\test_autobkp.py", line 287, in test_validate_data
+    json.dump(result, f, ensure_ascii=False, indent=2)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
+2025-04-25 00:27:47,579 - test_autobkp - ERROR - ✗ Kiểm tra chức năng validate_data thất bại
+2025-04-25 00:27:47,580 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-25 00:33:48,714 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-25 00:33:49,811 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-25 00:33:49,811 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_0_9qy3mj
+2025-04-25 00:33:49,811 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-25 00:33:49,811 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-25 00:33:49,811 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-25 00:33:49,813 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-25 00:33:49,813 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-25 00:33:49,813 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-25 00:33:49,813 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-25 00:33:49,816 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_0_9qy3mj\test_customer_sample_data.csv
+2025-04-25 00:33:49,816 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-25 00:33:49,816 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-25 00:33:49,816 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_0_9qy3mj\test_customer_sample_data.csv
+2025-04-25 00:33:49,851 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-25 00:33:49,855 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-25 00:33:49,855 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-25 00:33:49,856 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-25 00:33:49,856 - test_autobkp - ERROR - Lỗi khi kiểm tra chức năng validate_data: Type <class 'numpy.bool'> not serializable
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\test_autobkp.py", line 302, in test_validate_data
+    json.dump(result, f, ensure_ascii=False, indent=2, default=json_serializable)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\test_autobkp.py", line 298, in json_serializable
+    raise TypeError(f"Type {type(obj)} not serializable")
+TypeError: Type <class 'numpy.bool'> not serializable
+2025-04-25 00:33:49,858 - test_autobkp - ERROR - ✗ Kiểm tra chức năng validate_data thất bại
+2025-04-25 00:33:49,858 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-25 00:36:15,350 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-25 00:36:16,498 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-25 00:36:16,500 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5
+2025-04-25 00:36:16,500 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-25 00:36:16,500 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-25 00:36:16,500 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-25 00:36:16,501 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-25 00:36:16,501 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-25 00:36:16,501 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-25 00:36:16,501 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-25 00:36:16,504 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_sample_data.csv
+2025-04-25 00:36:16,504 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-25 00:36:16,504 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-25 00:36:16,504 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_sample_data.csv
+2025-04-25 00:36:16,533 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-25 00:36:16,538 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-25 00:36:16,538 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-25 00:36:16,539 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-25 00:36:16,539 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\validate_result.json
+2025-04-25 00:36:16,539 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-25 00:36:16,539 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-25 00:36:16,539 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-25 00:36:16,539 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-25 00:36:16,541 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_sample_data.csv
+2025-04-25 00:36:16,542 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-25 00:36:16,543 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_sample_data.csv
+2025-04-25 00:36:16,543 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-25 00:36:16,546 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-25 00:36:16,547 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-25 00:36:16,548 - preprocess - INFO - Số lượng lớp: 15
+2025-04-25 00:36:16,548 - preprocess - INFO - Tỷ lệ mất cân bằng: 2.50
+2025-04-25 00:36:16,548 - preprocess - INFO - Lớp hiếm nhất có 4 mẫu (4.00%)
+2025-04-25 00:36:16,548 - preprocess - INFO - Lớp phổ biến nhất có 10 mẫu (10.00%)
+2025-04-25 00:36:16,549 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-25 00:36:16,549 - preprocess - INFO - Số lượng lớp: 10
+2025-04-25 00:36:16,551 - preprocess - INFO - Tỷ lệ mất cân bằng: 7.00
+2025-04-25 00:36:16,551 - preprocess - INFO - Lớp hiếm nhất có 1 mẫu (2.56%)
+2025-04-25 00:36:16,551 - preprocess - INFO - Lớp phổ biến nhất có 7 mẫu (17.95%)
+2025-04-25 00:36:16,551 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-25 00:36:16,552 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-25 00:36:16,552 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-25 00:36:16,556 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_train_20250425_003616.csv
+2025-04-25 00:36:16,557 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_test_20250425_003616.csv
+2025-04-25 00:36:16,557 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_metadata_20250425_003616.json
+2025-04-25 00:36:16,557 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_metadata_20250425_003616.json
+2025-04-25 00:36:16,557 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-25 00:36:16,559 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_train_20250425_003616.csv
+2025-04-25 00:36:16,559 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_ii8gvhk5\test_customer_test_20250425_003616.csv
+2025-04-25 00:36:16,603 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-25 00:36:16,604 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-25 00:36:16,604 - test_autobkp - ERROR - Thiếu cột mục tiêu chính HachToan trong tập huấn luyện
+2025-04-25 00:36:16,604 - test_autobkp - ERROR - ✗ Kiểm tra chức năng tiền xử lý thất bại
+2025-04-25 00:36:16,604 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-25 00:42:13,015 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-25 00:42:14,129 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-25 00:42:14,129 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6
+2025-04-25 00:42:14,129 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-25 00:42:14,129 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-25 00:42:14,129 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-25 00:42:14,130 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-25 00:42:14,130 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-25 00:42:14,130 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-25 00:42:14,130 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-25 00:42:14,132 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_sample_data.csv
+2025-04-25 00:42:14,132 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-25 00:42:14,133 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-25 00:42:14,133 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_sample_data.csv
+2025-04-25 00:42:14,159 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-25 00:42:14,163 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-25 00:42:14,163 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-25 00:42:14,164 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-25 00:42:14,164 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\validate_result.json
+2025-04-25 00:42:14,164 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-25 00:42:14,166 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-25 00:42:14,166 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-25 00:42:14,166 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-25 00:42:14,166 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_sample_data.csv
+2025-04-25 00:42:14,168 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-25 00:42:14,168 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_sample_data.csv
+2025-04-25 00:42:14,168 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-25 00:42:14,169 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-25 00:42:14,170 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-25 00:42:14,170 - preprocess - INFO - Số lượng lớp: 15
+2025-04-25 00:42:14,171 - preprocess - INFO - Tỷ lệ mất cân bằng: 3.00
+2025-04-25 00:42:14,171 - preprocess - INFO - Lớp hiếm nhất có 4 mẫu (4.00%)
+2025-04-25 00:42:14,171 - preprocess - INFO - Lớp phổ biến nhất có 12 mẫu (12.00%)
+2025-04-25 00:42:14,172 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-25 00:42:14,172 - preprocess - INFO - Số lượng lớp: 9
+2025-04-25 00:42:14,172 - preprocess - INFO - Tỷ lệ mất cân bằng: 6.00
+2025-04-25 00:42:14,172 - preprocess - INFO - Lớp hiếm nhất có 1 mẫu (3.03%)
+2025-04-25 00:42:14,172 - preprocess - INFO - Lớp phổ biến nhất có 6 mẫu (18.18%)
+2025-04-25 00:42:14,172 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-25 00:42:14,173 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-25 00:42:14,173 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-25 00:42:14,177 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_train_20250425_004214.csv
+2025-04-25 00:42:14,178 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_test_20250425_004214.csv
+2025-04-25 00:42:14,178 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_metadata_20250425_004214.json
+2025-04-25 00:42:14,179 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_metadata_20250425_004214.json
+2025-04-25 00:42:14,179 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-25 00:42:14,179 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_train_20250425_004214.csv
+2025-04-25 00:42:14,179 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_test_20250425_004214.csv
+2025-04-25 00:42:14,228 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-25 00:42:14,228 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-25 00:42:14,228 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-25 00:42:14,229 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-25 00:42:14,229 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-25 00:42:14,229 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-25 00:42:14,230 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_train_20250425_004214.csv
+2025-04-25 00:42:14,231 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_tnedjzq6\test_customer_test_20250425_004214.csv
+2025-04-25 00:42:14,232 - train - ERROR - Lỗi khi huấn luyện mô hình: 'ModelTrainer' object has no attribute 'train_hachtoan_model'
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 1641, in train_customer_model
+    trainer.train_hachtoan_model(train_df)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ModelTrainer' object has no attribute 'train_hachtoan_model'. Did you mean: 'hachtoan_model'?
+2025-04-25 00:42:14,234 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: 'ModelTrainer' object has no attribute 'train_hachtoan_model'
+2025-04-25 00:42:14,234 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
+2025-04-25 00:42:14,234 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo

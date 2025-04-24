@@ -1,0 +1,98 @@
+{
+  "column_config": {
+    "vietnamese_text_columns": [
+      "TenHangHoaDichVu"
+    ],
+    "id_columns": [
+      "MSTNguoiBan"
+    ],
+    "target_columns": {
+      "primary": "HachToan",
+      "secondary": "MaHangHoa",
+      "secondary_condition": {
+        "column": "HachToan",
+        "starts_with": "15"
+      }
+    },
+    "optional_columns": []
+  },
+  "preprocessing_config": {
+    "vietnamese_tokenizer": "underthesea",
+    "remove_stopwords": true,
+    "normalize_text": true,
+    "text_features": {
+      "max_features": 10000,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 2
+    },
+    "id_features": {
+      "handle_unknown": "ignore"
+    }
+  },
+  "model_config": {
+    "hachtoan_model": {
+      "type": "xgboost",
+      "params": {
+        "n_estimators": 100,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "objective": "multi:softprob",
+        "n_jobs": -1,
+        "random_state": 42
+      },
+      "handle_imbalance": true,
+      "imbalance_strategy": "auto"
+    },
+    "mahanghua_model": {
+      "type": "xgboost",
+      "params": {
+        "n_estimators": 100,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "objective": "multi:softprob",
+        "n_jobs": -1,
+        "random_state": 42
+      },
+      "handle_imbalance": true,
+      "imbalance_strategy": "auto"
+    },
+    "outlier_detection": {
+      "enabled": true,
+      "method": "isolation_forest",
+      "params": {
+        "contamination": "auto",
+        "n_estimators": 100,
+        "random_state": 42
+      },
+      "threshold": 0.85
+    }
+  },
+  "training_config": {
+    "test_size": 0.2,
+    "cross_validation": {
+      "enabled": true,
+      "n_splits": 5,
+      "shuffle": true,
+      "random_state": 42
+    },
+    "feature_importance": true,
+    "save_evaluation_metrics": true
+  },
+  "incremental_training_config": {
+    "enabled": true,
+    "keep_history": true,
+    "max_versions": 5
+  },
+  "api_config": {
+    "batch_prediction": true,
+    "return_probabilities": true,
+    "outlier_warnings": true
+  },
+  "_metadata": {
+    "last_updated": "2025-04-25T00:27:47.479463",
+    "customer_id": "test_customer"
+  }
+}

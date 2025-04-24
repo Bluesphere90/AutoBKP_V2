@@ -1592,43 +1592,127 @@ class ModelTrainer:
                         "error": str(e),
                         "timestamp": datetime.now().isoformat()
                     }
+def train_customer_model(customer_id: str, train_file: str, test_file: str = None,
+                         incremental: bool = False, version: str = None) -> Dict[str, Any]:
+    """
+    Huấn luyện mô hình cho khách hàng
 
-            def main(self):
-                """Hàm chính để chạy script từ command line"""
-                parser = argparse.ArgumentParser(description='Huấn luyện mô hình phân loại')
-                parser.add_argument('--customer-id', required=True, help='ID của khách hàng')
-                parser.add_argument('--train-file', required=True, help='Đường dẫn đến file CSV dữ liệu huấn luyện')
-                parser.add_argument('--test-file', help='Đường dẫn đến file CSV dữ liệu kiểm tra (tùy chọn)')
-                parser.add_argument('--incremental', action='store_true', help='Thực hiện huấn luyện tăng cường')
-                parser.add_argument('--version', help='Phiên bản mô hình (tùy chọn)')
-                parser.add_argument('--output-file', help='Đường dẫn đến file JSON kết quả (tùy chọn)')
+    Args:
+        customer_id: ID của khách hàng
+        train_file: Đường dẫn đến file CSV dữ liệu huấn luyện
+        test_file: Đường dẫn đến file CSV dữ liệu kiểm tra (optional)
+        incremental: Nếu True, sẽ thực hiện huấn luyện tăng cường
+        version: Phiên bản mô hình (nếu None, sẽ tạo mới)
 
-                args = parser.parse_args()
+    Returns:
+        Dict chứa thông tin về kết quả huấn luyện
+    """
+    start_time = time.time()
+    logger.info(f"Bắt đầu huấn luyện mô hình cho khách hàng {customer_id}")
 
-                try:
-                    result = self.train_customer_model(
-                        customer_id=args.customer_id,
-                        train_file=args.train_file,
-                        test_file=args.test_file,
-                        incremental=args.incremental,
-                        version=args.version
-                    )
+    try:
+        # Đọc dữ liệu huấn luyện
+        train_df = pd.read_csv(train_file, sep=";", encoding='utf-8-sig')
+        logger.info(f"Đã đọc {len(train_df)} dòng dữ liệu huấn luyện từ {train_file}")
 
-                    # Lưu kết quả vào file JSON nếu được chỉ định
-                    if args.output_file:
-                        with open(args.output_file, 'w', encoding='utf-8') as f:
-                            json.dump(result, f, ensure_ascii=False, indent=2)
-                        logger.info(f"Đã lưu kết quả vào: {args.output_file}")
+        # Đọc dữ liệu kiểm tra nếu có
+        test_df = None
+        if test_file:
+            try:
+                test_df = pd.read_csv(test_file, sep=";", encoding='utf-8-sig')
+                logger.info(f"Đã đọc {len(test_df)} dòng dữ liệu kiểm tra từ {test_file}")
+            except Exception as e:
+                logger.error(f"Lỗi khi đọc file kiểm tra {test_file}: {str(e)}")
 
-                    # In ra kết quả cho script gọi
-                    print(json.dumps(result))
+        # Huấn luyện mô hình dựa trên chế độ
+        if incremental:
+            # Huấn luyện tăng cường
+            trainer = IncrementalModelTrainer(customer_id, version)
 
-                    # Trả về mã lỗi
-                    return 0 if result["status"] == "success" else 1
-                except Exception as e:
-                    logger.exception(f"Lỗi không xử lý được: {str(e)}")
-                    return 1
+            # Huấn luyện các mô hình
+            trainer.incremental_train_hachtoan_model(train_df)
+            trainer.incremental_train_mahanghua_model(train_df)
+            trainer.incremental_train_outlier_detector(train_df)
+        else:
+            # Huấn luyện mới
+            trainer = ModelTrainer(customer_id, version)
 
-            if __name__ == "__main__":
-                sys.exit(main())
+            # Huấn luyện các mô hình
+            trainer.train_hachtoan_model(train_df)
+            trainer.train_mahanghua_model(train_df)
+            trainer.train_outlier_detector(train_df)
+
+        # Lưu các mô hình
+        saved_files = trainer.save_models()
+
+        # Thời gian huấn luyện
+        total_time = time.time() - start_time
+        logger.info(f"Hoàn tất huấn luyện trong {total_time:.2f} giây")
+
+        # Tạo kết quả
+        result = {
+            "status": "success",
+            "customer_id": customer_id,
+            "train_file": train_file,
+            "test_file": test_file,
+            "incremental": incremental,
+            "version": trainer.version,
+            "saved_files": saved_files,
+            "total_time": total_time,
+            "timestamp": datetime.now().isoformat()
+        }
+
+        return result
+
+    except Exception as e:
+        logger.exception(f"Lỗi khi huấn luyện mô hình: {str(e)}")
+        return {
+            "status": "error",
+            "customer_id": customer_id,
+            "train_file": train_file,
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
+
+
+def main():
+    """Hàm chính để chạy script từ command line"""
+    parser = argparse.ArgumentParser(description='Huấn luyện mô hình phân loại')
+    parser.add_argument('--customer-id', required=True, help='ID của khách hàng')
+    parser.add_argument('--train-file', required=True, help='Đường dẫn đến file CSV dữ liệu huấn luyện')
+    parser.add_argument('--test-file', help='Đường dẫn đến file CSV dữ liệu kiểm tra (tùy chọn)')
+    parser.add_argument('--incremental', action='store_true', help='Thực hiện huấn luyện tăng cường')
+    parser.add_argument('--version', help='Phiên bản mô hình (tùy chọn)')
+    parser.add_argument('--output-file', help='Đường dẫn đến file JSON kết quả (tùy chọn)')
+
+    args = parser.parse_args()
+
+    try:
+        result = train_customer_model(
+            customer_id=args.customer_id,
+            train_file=args.train_file,
+            test_file=args.test_file,
+            incremental=args.incremental,
+            version=args.version
+        )
+
+        # Lưu kết quả vào file JSON nếu được chỉ định
+        if args.output_file:
+            with open(args.output_file, 'w', encoding='utf-8') as f:
+                json.dump(result, f, ensure_ascii=False, indent=2)
+            logger.info(f"Đã lưu kết quả vào: {args.output_file}")
+
+        # In ra kết quả cho script gọi
+        print(json.dumps(result))
+
+        # Trả về mã lỗi
+        return 0 if result["status"] == "success" else 1
+    except Exception as e:
+        logger.exception(f"Lỗi không xử lý được: {str(e)}")
+        return 1
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+
 
