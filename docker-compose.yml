@@ -9,8 +9,10 @@ services:
       - ./volumes/data:/app/volumes/data
       - ./volumes/models:/app/volumes/models
       - ./volumes/config:/app/volumes/config
+      - ./volumes/logs:/app/volumes/logs
     environment:
       - DATA_PATH=/app/volumes/data
       - MODELS_PATH=/app/volumes/models
       - CONFIG_PATH=/app/volumes/config
+      - LOGS_PATH=/app/volumes/logs
     restart: unless-stopped
