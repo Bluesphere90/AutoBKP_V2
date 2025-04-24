@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3256e17-2a41-472b-84a3-11316b22456f" name="Changes" comment="Chinh sua train.py" />
+    <list default="true" id="f3256e17-2a41-472b-84a3-11316b22456f" name="Changes" comment="Hoan thien docker compose">
+      <change beforePath="$PROJECT_DIR$/app/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +133,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745487278842</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Chinh sua validate_data.py">
+      <option name="closed" value="true" />
+      <created>1745487568766</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745487568766</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Hoan thien docker compose">
+      <option name="closed" value="true" />
+      <created>1745487732287</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745487732287</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -140,6 +158,8 @@
     <MESSAGE value="Bo sun them cac tinh nang cho mo hinh" />
     <MESSAGE value="Bo sung tinh nang huan luyen tang cuong" />
     <MESSAGE value="Chinh sua train.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chinh sua train.py" />
+    <MESSAGE value="Chinh sua validate_data.py" />
+    <MESSAGE value="Hoan thien docker compose" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hoan thien docker compose" />
   </component>
 </project>
