@@ -428,192 +428,194 @@ def validate_target_distribution(df: pd.DataFrame, customer_id: str) -> Dict[str
                 "warning": "No samples match the condition for secondary target"
             }
 
-            # Cảnh báo về mất cân bằng dữ liệu
-        imbalance_warnings = []
+    # Cảnh báo về mất cân bằng dữ liệu
+    imbalance_warnings = []
 
-        if "primary_target" in result and result["primary_target"].get("is_severely_imbalanced", False):
-            imbalance_warnings.append({
-                "target": "primary",
-                "imbalance_ratio": result["primary_target"]["imbalance_ratio"],
-                "warning": "Severe class imbalance detected in primary target",
-                "severity": "high"
-            })
-        elif "primary_target" in result and result["primary_target"].get("is_imbalanced", False):
-            imbalance_warnings.append({
-                "target": "primary",
-                "imbalance_ratio": result["primary_target"]["imbalance_ratio"],
-                "warning": "Class imbalance detected in primary target",
-                "severity": "medium"
-            })
+    if "primary_target" in result and result["primary_target"].get("is_severely_imbalanced", False):
+        imbalance_warnings.append({
+            "target": "primary",
+            "imbalance_ratio": result["primary_target"]["imbalance_ratio"],
+            "warning": "Severe class imbalance detected in primary target",
+            "severity": "high"
+        })
+    elif "primary_target" in result and result["primary_target"].get("is_imbalanced", False):
+        imbalance_warnings.append({
+            "target": "primary",
+            "imbalance_ratio": result["primary_target"]["imbalance_ratio"],
+            "warning": "Class imbalance detected in primary target",
+            "severity": "medium"
+        })
 
-        if "secondary_target" in result and result["secondary_target"].get("is_severely_imbalanced", False):
-            imbalance_warnings.append({
-                "target": "secondary",
-                "imbalance_ratio": result["secondary_target"]["imbalance_ratio"],
-                "warning": "Severe class imbalance detected in secondary target",
-                "severity": "high"
-            })
-        elif "secondary_target" in result and result["secondary_target"].get("is_imbalanced", False):
-            imbalance_warnings.append({
-                "target": "secondary",
-                "imbalance_ratio": result["secondary_target"]["imbalance_ratio"],
-                "warning": "Class imbalance detected in secondary target",
-                "severity": "medium"
-            })
+    if "secondary_target" in result and result["secondary_target"].get("is_severely_imbalanced", False):
+        imbalance_warnings.append({
+            "target": "secondary",
+            "imbalance_ratio": result["secondary_target"]["imbalance_ratio"],
+            "warning": "Severe class imbalance detected in secondary target",
+            "severity": "high"
+        })
+    elif "secondary_target" in result and result["secondary_target"].get("is_imbalanced", False):
+        imbalance_warnings.append({
+            "target": "secondary",
+            "imbalance_ratio": result["secondary_target"]["imbalance_ratio"],
+            "warning": "Class imbalance detected in secondary target",
+            "severity": "medium"
+        })
 
-        result["imbalance_warnings"] = imbalance_warnings
-        result["has_imbalance_issues"] = len(imbalance_warnings) > 0
+    result["imbalance_warnings"] = imbalance_warnings
+    result["has_imbalance_issues"] = len(imbalance_warnings) > 0
 
-        return result
+    return result
 
-    def validate_data(file_path: str, customer_id: str) -> Dict[str, Any]:
-        """
-        Thực hiện toàn bộ kiểm tra tính hợp lệ của dữ liệu
 
-        Args:
-            file_path: Đường dẫn đến file CSV
-            customer_id: ID của khách hàng
+def validate_data(file_path: str, customer_id: str) -> Dict[str, Any]:
+    """
+    Thực hiện toàn bộ kiểm tra tính hợp lệ của dữ liệu
 
-        Returns:
-            Dict chứa kết quả kiểm tra
-        """
-        logger.info(f"Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file {file_path}")
+    Args:
+        file_path: Đường dẫn đến file CSV
+        customer_id: ID của khách hàng
 
-        # Đọc file CSV
-        try:
-            df, encoding = read_csv_file(file_path)
-        except Exception as e:
-            logger.error(f"Không thể đọc file: {str(e)}")
-            return {
-                "status": "error",
-                "error": str(e),
-                "file_path": file_path,
-                "customer_id": customer_id,
-                "timestamp": datetime.now().isoformat()
-            }
+    Returns:
+        Dict chứa kết quả kiểm tra
+    """
+    logger.info(f"Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file {file_path}")
 
-        # Thông tin cơ bản về file
-        file_info = {
+    # Đọc file CSV
+    try:
+        df, encoding = read_csv_file(file_path)
+    except Exception as e:
+        logger.error(f"Không thể đọc file: {str(e)}")
+        return {
+            "status": "error",
+            "error": str(e),
             "file_path": file_path,
-            "file_size": os.path.getsize(file_path),
-            "encoding": encoding,
-            "num_rows": len(df),
-            "num_columns": len(df.columns)
-        }
-
-        # Thực hiện các kiểm tra
-        column_presence = validate_column_presence(df, customer_id)
-        data_completeness = validate_data_completeness(df, customer_id)
-        data_types = validate_data_types(df, customer_id)
-        target_distribution = validate_target_distribution(df, customer_id)
-
-        # Tổng hợp các cảnh báo
-        warnings = []
-
-        # Cảnh báo về cột thiếu
-        if not column_presence["has_all_required"]:
-            warnings.append({
-                "category": "missing_columns",
-                "message": f"Missing required columns: {', '.join(column_presence['missing_columns'])}",
-                "severity": "high"
-            })
-
-        # Cảnh báo về dữ liệu không đầy đủ
-        for col_issue in data_completeness.get("problematic_columns", []):
-            warnings.append({
-                "category": "data_completeness",
-                "message": f"Column '{col_issue['column']}' has {col_issue['missing_percent']:.1f}% missing values",
-                "severity": col_issue["severity"]
-            })
-
-        # Cảnh báo về kiểu dữ liệu
-        for type_issue in data_types.get("type_issues", []):
-            warnings.append({
-                "category": "data_types",
-                "message": type_issue["issue"],
-                "severity": type_issue["severity"]
-            })
-
-        # Cảnh báo về mất cân bằng dữ liệu
-        for imbalance_warning in target_distribution.get("imbalance_warnings", []):
-            warnings.append({
-                "category": "class_imbalance",
-                "message": imbalance_warning["warning"],
-                "severity": imbalance_warning["severity"]
-            })
-
-        # Cảnh báo về kích thước dữ liệu
-        if len(df) < 100:
-            warnings.append({
-                "category": "data_size",
-                "message": f"Dataset is very small ({len(df)} samples). Model performance may be limited.",
-                "severity": "medium"
-            })
-
-        # Đánh giá tổng thể
-        if len([w for w in warnings if w["severity"] == "high"]) > 0:
-            overall_status = "critical_issues"
-        elif len(warnings) > 0:
-            overall_status = "warnings"
-        else:
-            overall_status = "valid"
-
-        # Kết quả tổng hợp
-        result = {
-            "status": "success",
-            "timestamp": datetime.now().isoformat(),
             "customer_id": customer_id,
-            "file_info": file_info,
-            "column_presence": column_presence,
-            "data_completeness": data_completeness,
-            "data_types": data_types,
-            "target_distribution": target_distribution,
-            "warnings": warnings,
-            "overall_status": overall_status
+            "timestamp": datetime.now().isoformat()
         }
 
-        logger.info(f"Hoàn tất kiểm tra. Trạng thái: {overall_status}")
-        logger.info(f"Tổng số cảnh báo: {len(warnings)}")
+    # Thông tin cơ bản về file
+    file_info = {
+        "file_path": file_path,
+        "file_size": os.path.getsize(file_path),
+        "encoding": encoding,
+        "num_rows": len(df),
+        "num_columns": len(df.columns)
+    }
 
-        return result
+    # Thực hiện các kiểm tra
+    column_presence = validate_column_presence(df, customer_id)
+    data_completeness = validate_data_completeness(df, customer_id)
+    data_types = validate_data_types(df, customer_id)
+    target_distribution = validate_target_distribution(df, customer_id)
+
+    # Tổng hợp các cảnh báo
+    warnings = []
+
+    # Cảnh báo về cột thiếu
+    if not column_presence["has_all_required"]:
+        warnings.append({
+            "category": "missing_columns",
+            "message": f"Missing required columns: {', '.join(column_presence['missing_columns'])}",
+            "severity": "high"
+        })
+
+    # Cảnh báo về dữ liệu không đầy đủ
+    for col_issue in data_completeness.get("problematic_columns", []):
+        warnings.append({
+            "category": "data_completeness",
+            "message": f"Column '{col_issue['column']}' has {col_issue['missing_percent']:.1f}% missing values",
+            "severity": col_issue["severity"]
+        })
+
+    # Cảnh báo về kiểu dữ liệu
+    for type_issue in data_types.get("type_issues", []):
+        warnings.append({
+            "category": "data_types",
+            "message": type_issue["issue"],
+            "severity": type_issue["severity"]
+        })
+
+    # Cảnh báo về mất cân bằng dữ liệu
+    for imbalance_warning in target_distribution.get("imbalance_warnings", []):
+        warnings.append({
+            "category": "class_imbalance",
+            "message": imbalance_warning["warning"],
+            "severity": imbalance_warning["severity"]
+        })
+
+    # Cảnh báo về kích thước dữ liệu
+    if len(df) < 100:
+        warnings.append({
+            "category": "data_size",
+            "message": f"Dataset is very small ({len(df)} samples). Model performance may be limited.",
+            "severity": "medium"
+        })
+
+    # Đánh giá tổng thể
+    if len([w for w in warnings if w["severity"] == "high"]) > 0:
+        overall_status = "critical_issues"
+    elif len(warnings) > 0:
+        overall_status = "warnings"
+    else:
+        overall_status = "valid"
+
+    # Kết quả tổng hợp
+    result = {
+        "status": "success",
+        "timestamp": datetime.now().isoformat(),
+        "customer_id": customer_id,
+        "file_info": file_info,
+        "column_presence": column_presence,
+        "data_completeness": data_completeness,
+        "data_types": data_types,
+        "target_distribution": target_distribution,
+        "warnings": warnings,
+        "overall_status": overall_status
+    }
+
+    logger.info(f"Hoàn tất kiểm tra. Trạng thái: {overall_status}")
+    logger.info(f"Tổng số cảnh báo: {len(warnings)}")
+
+    return result
 
 
-    def main():
-        """Hàm chính để chạy script từ command line"""
-        parser = argparse.ArgumentParser(description='Kiểm tra tính hợp lệ của dữ liệu')
-        parser.add_argument('--file-path', required=True, help='Đường dẫn đến file CSV cần kiểm tra')
-        parser.add_argument('--customer-id', required=True, help='ID của khách hàng')
-        parser.add_argument('--output-file', help='Đường dẫn đến file JSON kết quả (tùy chọn)')
+def main():
+    """Hàm chính để chạy script từ command line"""
+    parser = argparse.ArgumentParser(description='Kiểm tra tính hợp lệ của dữ liệu')
+    parser.add_argument('--file-path', required=True, help='Đường dẫn đến file CSV cần kiểm tra')
+    parser.add_argument('--customer-id', required=True, help='ID của khách hàng')
+    parser.add_argument('--output-file', help='Đường dẫn đến file JSON kết quả (tùy chọn)')
 
-        args = parser.parse_args()
+    args = parser.parse_args()
 
-        try:
-            result = validate_data(args.file_path, args.customer_id)
+    try:
+        result = validate_data(args.file_path, args.customer_id)
 
-            # Lưu kết quả vào file JSON nếu được chỉ định
-            if args.output_file:
-                with open(args.output_file, 'w', encoding='utf-8') as f:
-                    json.dump(result, f, ensure_ascii=False, indent=2)
-                logger.info(f"Đã lưu kết quả vào: {args.output_file}")
+        # Lưu kết quả vào file JSON nếu được chỉ định
+        if args.output_file:
+            with open(args.output_file, 'w', encoding='utf-8') as f:
+                json.dump(result, f, ensure_ascii=False, indent=2)
+            logger.info(f"Đã lưu kết quả vào: {args.output_file}")
 
-            # In ra kết quả cho script gọi
-            print(json.dumps(result))
+        # In ra kết quả cho script gọi
+        print(json.dumps(result))
 
-            # Trả về mã lỗi
-            return 0 if result["status"] == "success" else 1
+        # Trả về mã lỗi
+        return 0 if result["status"] == "success" else 1
 
-        except Exception as e:
-            logger.exception(f"Lỗi không xử lý được: {str(e)}")
-            result = {
-                "status": "error",
-                "error": str(e),
-                "file_path": args.file_path,
-                "customer_id": args.customer_id,
-                "timestamp": datetime.now().isoformat()
-            }
+    except Exception as e:
+        logger.exception(f"Lỗi không xử lý được: {str(e)}")
+        result = {
+            "status": "error",
+            "error": str(e),
+            "file_path": args.file_path,
+            "customer_id": args.customer_id,
+            "timestamp": datetime.now().isoformat()
+        }
 
-            print(json.dumps(result))
-            return 1
+        print(json.dumps(result))
+        return 1
 
-    if __name__ == "__main__":
-        sys.exit(main())
+
+if __name__ == "__main__":
+    sys.exit(main())
