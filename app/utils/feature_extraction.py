@@ -119,6 +119,28 @@ class FeatureExtractor:
 
         return text
 
+    # Hàm trình bao preprocess_texts để có thể pickle
+    def _preprocess_texts(self, texts):
+        """
+        Xử lý tập hợp văn bản (hỗ trợ nhiều định dạng đầu vào)
+
+        Args:
+            texts: Có thể là DataFrame, Series, mảng numpy, hoặc văn bản đơn lẻ
+
+        Returns:
+            Văn bản đã được xử lý
+        """
+        if isinstance(texts, pd.DataFrame):
+            # Nếu là DataFrame, mặc định lấy column đầu tiên từ text_columns
+            col = self.text_columns[0] if self.text_columns else texts.columns[0]
+            return texts[col].apply(self._preprocess_vietnamese_text)
+        elif isinstance(texts, pd.Series):
+            return texts.apply(self._preprocess_vietnamese_text)
+        elif isinstance(texts, np.ndarray):
+            return np.array([self._preprocess_vietnamese_text(text) for text in texts])
+        else:
+            return self._preprocess_vietnamese_text(texts)
+
     def _create_text_transformer(self, column: str) -> Pipeline:
         """
         Tạo transformer cho cột văn bản
@@ -147,21 +169,17 @@ class FeatureExtractor:
         # Lưu vectorizer
         self.text_transformers[column] = vectorizer
 
-        # Sửa lỗi cả Series và phần tử đơn lẻ
-        def preprocess_fn(texts):
-            if isinstance(texts, pd.DataFrame):
-                return texts[column].apply(self._preprocess_vietnamese_text)
-            elif isinstance(texts, pd.Series):
-                return texts.apply(self._preprocess_vietnamese_text)
-            elif isinstance(texts, np.ndarray):
-                return np.array([self._preprocess_vietnamese_text(text) for text in texts])
-            else:
-                return self._preprocess_vietnamese_text(texts)
-
-        # Sử dụng FunctionTransformer từ scikit-learn
+        # Sử dụng FunctionTransformer từ scikit-learn với phương thức class
         from sklearn.preprocessing import FunctionTransformer
+
+        # Tạo closure để truyền column vào preprocess_texts
+        def column_preprocessor(X):
+            if isinstance(X, pd.DataFrame):
+                return self._preprocess_texts(X[column])
+            return self._preprocess_texts(X)
+
         preprocess_transformer = FunctionTransformer(
-            preprocess_fn,
+            column_preprocessor,
             validate=False
         )
 
@@ -207,7 +225,7 @@ class FeatureExtractor:
                 transformers.append(('num', numeric_transformer, numeric_cols))
 
         # Tạo column transformer
-        self.column_transformer = ColumnTransformer(transformers)
+        self.column_transformer = ColumnTransformer(transformers, force_int_remainder_cols=False)
 
         # Fit transformer
         self.column_transformer.fit(df)

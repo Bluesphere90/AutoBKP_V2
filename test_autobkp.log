@@ -767,3 +767,514 @@ ValueError: Invalid classes inferred from unique values of `y`.  Expected: [ 0  
  3335]
 2025-04-26 00:53:27,777 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
 2025-04-26 00:53:27,777 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-26 01:05:08,722 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-26 01:05:09,897 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-26 01:05:09,897 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s
+2025-04-26 01:05:09,897 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-26 01:05:09,897 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-26 01:05:09,897 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-26 01:05:09,897 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-26 01:05:09,898 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-26 01:05:09,898 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-26 01:05:09,898 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-26 01:05:09,900 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_sample_data.csv
+2025-04-26 01:05:09,900 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-26 01:05:09,900 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-26 01:05:09,900 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_sample_data.csv
+2025-04-26 01:05:09,927 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-26 01:05:09,930 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-26 01:05:09,930 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-26 01:05:09,932 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-26 01:05:09,933 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\validate_result.json
+2025-04-26 01:05:09,933 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-26 01:05:09,933 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-26 01:05:09,933 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-26 01:05:09,933 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-26 01:05:09,934 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_sample_data.csv
+2025-04-26 01:05:09,934 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-26 01:05:09,935 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_sample_data.csv
+2025-04-26 01:05:09,936 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-26 01:05:09,937 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-26 01:05:09,938 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-26 01:05:09,939 - preprocess - INFO - Số lượng lớp: 14
+2025-04-26 01:05:09,939 - preprocess - INFO - Tỷ lệ mất cân bằng: 3.67
+2025-04-26 01:05:09,939 - preprocess - INFO - Lớp hiếm nhất có 3 mẫu (3.00%)
+2025-04-26 01:05:09,939 - preprocess - INFO - Lớp phổ biến nhất có 11 mẫu (11.00%)
+2025-04-26 01:05:09,939 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-26 01:05:09,940 - preprocess - INFO - Số lượng lớp: 10
+2025-04-26 01:05:09,940 - preprocess - INFO - Tỷ lệ mất cân bằng: 8.00
+2025-04-26 01:05:09,940 - preprocess - INFO - Lớp hiếm nhất có 1 mẫu (2.56%)
+2025-04-26 01:05:09,940 - preprocess - INFO - Lớp phổ biến nhất có 8 mẫu (20.51%)
+2025-04-26 01:05:09,940 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-26 01:05:09,940 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-26 01:05:09,940 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-26 01:05:09,947 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_train_20250426_010509.csv
+2025-04-26 01:05:09,948 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_test_20250426_010509.csv
+2025-04-26 01:05:09,949 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_metadata_20250426_010509.json
+2025-04-26 01:05:09,949 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_metadata_20250426_010509.json
+2025-04-26 01:05:09,949 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-26 01:05:09,949 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_train_20250426_010509.csv
+2025-04-26 01:05:09,949 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_test_20250426_010509.csv
+2025-04-26 01:05:09,990 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-26 01:05:09,990 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-26 01:05:09,991 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-26 01:05:09,991 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-26 01:05:09,991 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-26 01:05:09,991 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-26 01:05:09,992 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_train_20250426_010509.csv
+2025-04-26 01:05:09,993 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_kwb7vl8s\test_customer_test_20250426_010509.csv
+2025-04-26 01:05:09,995 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-26 01:05:09,995 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 01:05:09,996 - train - INFO - Tạo feature extractor...
+2025-04-26 01:05:09,996 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-26 01:05:09,997 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 01:05:10,003 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 01:05:10,006 - train - INFO - Đã trích xuất 181 đặc trưng
+2025-04-26 01:05:10,007 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 01:05:10,007 - train - INFO - Tỷ lệ mất cân bằng 3.33 <= 10, không cần xử lý
+2025-04-26 01:05:10,007 - train - INFO - Tạo mô hình xgboost cho hachtoan_model
+2025-04-26 01:05:10,029 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 01:05:10,031 - train - INFO - Huấn luyện mô hình...
+2025-04-26 01:05:10,031 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 01:05:10,031 - train - INFO - Hoàn tất huấn luyện trong 0.04 giây
+2025-04-26 01:05:10,032 - train - INFO - Bắt đầu huấn luyện mô hình MaHangHoa cho khách hàng test_customer
+2025-04-26 01:05:10,033 - train - INFO - Lọc dữ liệu theo điều kiện: 31/80 dòng thỏa mãn
+2025-04-26 01:05:10,033 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 01:05:10,034 - train - INFO - Mã hóa nhãn MaHangHoa từ kiểu object
+2025-04-26 01:05:10,035 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 01:05:10,039 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 01:05:10,042 - train - INFO - Đã trích xuất 100 đặc trưng
+2025-04-26 01:05:10,042 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 01:05:10,042 - train - INFO - Tỷ lệ mất cân bằng 8.00 <= 10, không cần xử lý
+2025-04-26 01:05:10,042 - train - INFO - Tạo mô hình xgboost cho mahanghua_model
+2025-04-26 01:05:10,042 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 01:05:10,043 - train - INFO - Huấn luyện mô hình...
+2025-04-26 01:05:10,168 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 01:05:10,169 - train - INFO - Hoàn tất huấn luyện trong 0.14 giây
+2025-04-26 01:05:10,171 - train - INFO - Bắt đầu huấn luyện mô hình phát hiện outlier cho khách hàng test_customer
+2025-04-26 01:05:10,172 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 01:05:10,174 - train - INFO - Trích xuất đặc trưng cho phát hiện outlier...
+2025-04-26 01:05:10,180 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 01:05:10,185 - train - INFO - Đã trích xuất 181 đặc trưng
+2025-04-26 01:05:10,186 - train - INFO - Tạo mô hình phát hiện outlier isolation_forest
+2025-04-26 01:05:10,256 - train - INFO - Huấn luyện mô hình phát hiện outlier...
+2025-04-26 01:05:10,350 - train - INFO - Hoàn tất huấn luyện mô hình phát hiện outlier trong 0.18 giây
+2025-04-26 01:05:10,351 - train - INFO - Lưu các mô hình đã huấn luyện cho khách hàng test_customer
+2025-04-26 01:05:10,351 - train - ERROR - Lỗi khi huấn luyện mô hình: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.preprocess_fn at 0x000001F9FB0336A0>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.preprocess_fn
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 1690, in train_customer_model
+    saved_files = trainer.save_models()
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 748, in save_models
+    joblib.dump(self.hachtoan_model, hachtoan_path)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 553, in dump
+    NumpyPickler(f, protocol=protocol).dump(value)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 481, in dump
+    self.save(obj)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 1063, in save_global
+    raise PicklingError(
+_pickle.PicklingError: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.preprocess_fn at 0x000001F9FB0336A0>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.preprocess_fn
+2025-04-26 01:05:10,380 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.preprocess_fn at 0x000001F9FB0336A0>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.preprocess_fn
+2025-04-26 01:05:10,380 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
+2025-04-26 01:05:10,380 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-26 01:27:09,014 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-26 01:27:10,117 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-26 01:27:10,117 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku
+2025-04-26 01:27:10,118 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-26 01:27:10,118 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-26 01:27:10,118 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-26 01:27:10,119 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-26 01:27:10,119 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-26 01:27:10,119 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-26 01:27:10,119 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-26 01:27:10,121 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_sample_data.csv
+2025-04-26 01:27:10,121 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-26 01:27:10,122 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-26 01:27:10,122 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_sample_data.csv
+2025-04-26 01:27:10,147 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-26 01:27:10,151 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-26 01:27:10,151 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-26 01:27:10,151 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-26 01:27:10,152 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\validate_result.json
+2025-04-26 01:27:10,154 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-26 01:27:10,154 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-26 01:27:10,154 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-26 01:27:10,154 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-26 01:27:10,155 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_sample_data.csv
+2025-04-26 01:27:10,156 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-26 01:27:10,156 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_sample_data.csv
+2025-04-26 01:27:10,157 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-26 01:27:10,158 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-26 01:27:10,159 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-26 01:27:10,160 - preprocess - INFO - Số lượng lớp: 15
+2025-04-26 01:27:10,160 - preprocess - INFO - Tỷ lệ mất cân bằng: 4.67
+2025-04-26 01:27:10,160 - preprocess - INFO - Lớp hiếm nhất có 3 mẫu (3.00%)
+2025-04-26 01:27:10,160 - preprocess - INFO - Lớp phổ biến nhất có 14 mẫu (14.00%)
+2025-04-26 01:27:10,161 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-26 01:27:10,161 - preprocess - INFO - Số lượng lớp: 9
+2025-04-26 01:27:10,161 - preprocess - INFO - Tỷ lệ mất cân bằng: 3.00
+2025-04-26 01:27:10,161 - preprocess - INFO - Lớp hiếm nhất có 2 mẫu (6.25%)
+2025-04-26 01:27:10,161 - preprocess - INFO - Lớp phổ biến nhất có 6 mẫu (18.75%)
+2025-04-26 01:27:10,162 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-26 01:27:10,162 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-26 01:27:10,163 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-26 01:27:10,172 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_train_20250426_012710.csv
+2025-04-26 01:27:10,174 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_test_20250426_012710.csv
+2025-04-26 01:27:10,175 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_metadata_20250426_012710.json
+2025-04-26 01:27:10,175 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_metadata_20250426_012710.json
+2025-04-26 01:27:10,175 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-26 01:27:10,175 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_train_20250426_012710.csv
+2025-04-26 01:27:10,176 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_test_20250426_012710.csv
+2025-04-26 01:27:10,219 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-26 01:27:10,219 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-26 01:27:10,220 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-26 01:27:10,220 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-26 01:27:10,220 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-26 01:27:10,220 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-26 01:27:10,221 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_train_20250426_012710.csv
+2025-04-26 01:27:10,223 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_3g5se2ku\test_customer_test_20250426_012710.csv
+2025-04-26 01:27:10,223 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-26 01:27:10,224 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 01:27:10,225 - train - INFO - Tạo feature extractor...
+2025-04-26 01:27:10,225 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-26 01:27:10,226 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 01:27:10,232 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 01:27:10,235 - train - INFO - Đã trích xuất 182 đặc trưng
+2025-04-26 01:27:10,236 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 01:27:10,236 - train - INFO - Đã tự động chọn chiến lược: class_weight
+2025-04-26 01:27:10,236 - train - INFO - Sẽ sử dụng class_weight trong mô hình thay vì resampling
+2025-04-26 01:27:10,236 - train - INFO - Tạo mô hình xgboost cho hachtoan_model
+2025-04-26 01:27:10,267 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 01:27:10,267 - train - INFO - Huấn luyện mô hình...
+2025-04-26 01:27:10,267 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 01:27:10,267 - train - INFO - Hoàn tất huấn luyện trong 0.04 giây
+2025-04-26 01:27:10,268 - train - INFO - Bắt đầu huấn luyện mô hình MaHangHoa cho khách hàng test_customer
+2025-04-26 01:27:10,269 - train - INFO - Lọc dữ liệu theo điều kiện: 28/80 dòng thỏa mãn
+2025-04-26 01:27:10,269 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 01:27:10,270 - train - INFO - Mã hóa nhãn MaHangHoa từ kiểu object
+2025-04-26 01:27:10,271 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 01:27:10,276 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 01:27:10,278 - train - INFO - Đã trích xuất 90 đặc trưng
+2025-04-26 01:27:10,279 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 01:27:10,279 - train - INFO - Tỷ lệ mất cân bằng 6.00 <= 10, không cần xử lý
+2025-04-26 01:27:10,279 - train - INFO - Tạo mô hình xgboost cho mahanghua_model
+2025-04-26 01:27:10,280 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 01:27:10,280 - train - INFO - Huấn luyện mô hình...
+2025-04-26 01:27:10,399 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 01:27:10,400 - train - INFO - Hoàn tất huấn luyện trong 0.13 giây
+2025-04-26 01:27:10,401 - train - INFO - Bắt đầu huấn luyện mô hình phát hiện outlier cho khách hàng test_customer
+2025-04-26 01:27:10,401 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 01:27:10,404 - train - INFO - Trích xuất đặc trưng cho phát hiện outlier...
+2025-04-26 01:27:10,410 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 01:27:10,414 - train - INFO - Đã trích xuất 182 đặc trưng
+2025-04-26 01:27:10,414 - train - INFO - Tạo mô hình phát hiện outlier isolation_forest
+2025-04-26 01:27:10,480 - train - INFO - Huấn luyện mô hình phát hiện outlier...
+2025-04-26 01:27:10,567 - train - INFO - Hoàn tất huấn luyện mô hình phát hiện outlier trong 0.17 giây
+2025-04-26 01:27:10,568 - train - INFO - Lưu các mô hình đã huấn luyện cho khách hàng test_customer
+2025-04-26 01:27:10,569 - train - ERROR - Lỗi khi huấn luyện mô hình: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.column_preprocessor at 0x00000113964C7740>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.column_preprocessor
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 1690, in train_customer_model
+    saved_files = trainer.save_models()
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 748, in save_models
+    joblib.dump(self.hachtoan_model, hachtoan_path)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 553, in dump
+    NumpyPickler(f, protocol=protocol).dump(value)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 481, in dump
+    self.save(obj)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 1063, in save_global
+    raise PicklingError(
+_pickle.PicklingError: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.column_preprocessor at 0x00000113964C7740>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.column_preprocessor
+2025-04-26 01:27:10,575 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.column_preprocessor at 0x00000113964C7740>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.column_preprocessor
+2025-04-26 01:27:10,575 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
+2025-04-26 01:27:10,575 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo

@@ -186,10 +186,14 @@ class ModelTrainer:
             strategy = model_config.get('imbalance_strategy', 'auto')
             logger.info(f"Xử lý mất cân bằng dữ liệu với chiến lược: {strategy}")
 
+            # Đảm bảo nhãn là mảng numpy
+            if not isinstance(y, np.ndarray):
+                y = np.array(y)
+
             # Đếm số lượng mẫu cho mỗi lớp
-            class_counts = np.bincount(y)
-            min_samples = min(class_counts)
-            max_samples = max(class_counts)
+            unique_classes, class_counts = np.unique(y, return_counts=True)
+            min_samples = np.min(class_counts)
+            max_samples = np.max(class_counts)
             imbalance_ratio = max_samples / min_samples if min_samples > 0 else float('inf')
 
             # Nếu không mất cân bằng, không cần xử lý
@@ -202,7 +206,7 @@ class ModelTrainer:
             if strategy == 'auto':
                 # Tự động chọn chiến lược dựa trên mức độ mất cân bằng
                 if imbalance_ratio > constants.SEVERE_IMBALANCE_THRESHOLD:
-                    if len(class_counts) > 2:  # Nhiều lớp
+                    if len(unique_classes) > 2:  # Nhiều lớp
                         strategy = 'smote'
                     else:  # Nhị phân
                         strategy = 'smoteenn'
@@ -219,36 +223,55 @@ class ModelTrainer:
 
             try:
                 # Import các thư viện cần thiết
-                from imblearn.over_sampling import SMOTE, ADASYN
+                from imblearn.over_sampling import SMOTE, ADASYN, RandomOverSampler
                 from imblearn.under_sampling import RandomUnderSampler, NearMiss
                 from imblearn.combine import SMOTEENN, SMOTETomek
 
                 # Kiểm tra xem mỗi lớp có đủ mẫu cho SMOTE hay không
                 if strategy in ['smote', 'smoteenn', 'smotetomek'] and min_samples < 6:
                     logger.warning(f"Không đủ mẫu cho SMOTE (min_samples={min_samples} < 6), sử dụng RandomOverSampler")
-                    from imblearn.over_sampling import RandomOverSampler
+                    strategy = 'random_oversampling'  # Thay đổi chiến lược
+
+                # Lưu lại mapping từ giá trị gốc sang giá trị 0-based để đảm bảo tính nhất quán
+                if not np.array_equal(unique_classes, np.arange(len(unique_classes))):
+                    logger.info("Nhãn không liên tiếp từ 0, tạo ánh xạ tạm thời")
+                    class_mapping = {old_val: new_val for new_val, old_val in enumerate(unique_classes)}
+                    inverse_mapping = {new_val: old_val for new_val, old_val in enumerate(unique_classes)}
+
+                    # Chuyển đổi thành nhãn liên tục từ 0
+                    y_temp = np.array([class_mapping[val] for val in y])
+                else:
+                    # Nhãn đã là 0-based liên tục
+                    y_temp = y
+                    inverse_mapping = None
+
+                # Khởi tạo resampler tương ứng
+                if strategy == 'smote':
+                    resampler = SMOTE(random_state=constants.DEFAULT_RANDOM_STATE)
+                elif strategy == 'adasyn':
+                    resampler = ADASYN(random_state=constants.DEFAULT_RANDOM_STATE)
+                elif strategy == 'smoteenn':
+                    resampler = SMOTEENN(random_state=constants.DEFAULT_RANDOM_STATE)
+                elif strategy == 'smotetomek':
+                    resampler = SMOTETomek(random_state=constants.DEFAULT_RANDOM_STATE)
+                elif strategy == 'undersampling':
+                    resampler = RandomUnderSampler(random_state=constants.DEFAULT_RANDOM_STATE)
+                elif strategy == 'nearmiss':
+                    resampler = NearMiss()
+                elif strategy == 'random_oversampling':
                     resampler = RandomOverSampler(random_state=constants.DEFAULT_RANDOM_STATE)
                 else:
-                    # Khởi tạo resampler tương ứng
-                    if strategy == 'smote':
-                        resampler = SMOTE(random_state=constants.DEFAULT_RANDOM_STATE)
-                    elif strategy == 'adasyn':
-                        resampler = ADASYN(random_state=constants.DEFAULT_RANDOM_STATE)
-                    elif strategy == 'smoteenn':
-                        resampler = SMOTEENN(random_state=constants.DEFAULT_RANDOM_STATE)
-                    elif strategy == 'smotetomek':
-                        resampler = SMOTETomek(random_state=constants.DEFAULT_RANDOM_STATE)
-                    elif strategy == 'undersampling':
-                        resampler = RandomUnderSampler(random_state=constants.DEFAULT_RANDOM_STATE)
-                    elif strategy == 'nearmiss':
-                        resampler = NearMiss()
-                    else:
-                        logger.warning(f"Chiến lược {strategy} không được hỗ trợ, sử dụng RandomOverSampler")
-                        from imblearn.over_sampling import RandomOverSampler
-                        resampler = RandomOverSampler(random_state=constants.DEFAULT_RANDOM_STATE)
+                    logger.warning(f"Chiến lược {strategy} không được hỗ trợ, sử dụng RandomOverSampler")
+                    resampler = RandomOverSampler(random_state=constants.DEFAULT_RANDOM_STATE)
 
-                # Thực hiện resampling
-                X_resampled, y_resampled = resampler.fit_resample(X, y)
+                # Thực hiện resampling với nhãn tạm thời đã được map
+                X_resampled, y_temp_resampled = resampler.fit_resample(X, y_temp)
+
+                # Chuyển lại về nhãn gốc nếu đã map
+                if inverse_mapping is not None:
+                    y_resampled = np.array([inverse_mapping[val] for val in y_temp_resampled])
+                else:
+                    y_resampled = y_temp_resampled
 
                 logger.info(f"Đã xử lý mất cân bằng: {len(y)} -> {len(y_resampled)} mẫu")
                 return X_resampled, y_resampled
@@ -260,6 +283,7 @@ class ModelTrainer:
         else:
             logger.info("Không xử lý mất cân bằng dữ liệu theo cấu hình")
             return X, y
+
     def _create_model(self, model_type: str) -> Any:
         """
         Tạo mô hình phân loại
@@ -473,7 +497,10 @@ class ModelTrainer:
 
         # Huấn luyện mô hình
         logger.info("Huấn luyện mô hình...")
-        classifier.fit(X_balanced, y_balanced)
+
+        # ===== SỬA LỖI: Đặt giá trị enable_categorical=True cho XGBoost =====
+        if hasattr(classifier, 'enable_categorical'):
+            classifier.enable_categorical = True
 
         # Tạo pipeline để dự đoán
         self.hachtoan_model = self._create_pipeline(self.feature_extractor, classifier)
