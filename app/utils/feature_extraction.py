@@ -72,16 +72,21 @@ class FeatureExtractor:
                 "Chức năng xử lý tiếng Việt sẽ bị hạn chế."
             )
 
-    def _preprocess_vietnamese_text(self, text: str) -> str:
+    def _preprocess_vietnamese_text(self, text: Union[str, pd.Series]) -> Union[str, pd.Series]:
         """
         Tiền xử lý văn bản tiếng Việt
 
         Args:
-            text: Chuỗi văn bản cần xử lý
+            text: Chuỗi văn bản hoặc Series cần xử lý
 
         Returns:
-            Chuỗi văn bản đã xử lý
+            Chuỗi văn bản hoặc Series đã xử lý
         """
+        # Kiểm tra và xử lý nếu đầu vào là Series
+        if isinstance(text, pd.Series):
+            return text.apply(self._preprocess_vietnamese_text)
+
+        # Xử lý giá trị đơn
         if not isinstance(text, str):
             return "" if pd.isna(text) else str(text)
 
@@ -142,11 +147,25 @@ class FeatureExtractor:
         # Lưu vectorizer
         self.text_transformers[column] = vectorizer
 
+        # Định nghĩa hàm xử lý đơn giản để truyền vào FunctionTransformer
+        def preprocess_text(X):
+            if isinstance(X, pd.Series):
+                return X.apply(lambda x: self._preprocess_vietnamese_text(x))
+            else:
+                # Nếu X là array, chuyển đổi từng phần tử
+                return np.array([self._preprocess_vietnamese_text(x) for x in X])
+
+        # Sử dụng FunctionTransformer từ scikit-learn
+        from sklearn.preprocessing import FunctionTransformer
+        preprocess_transformer = FunctionTransformer(
+            preprocess_text,
+            validate=False
+        )
+
         return Pipeline([
-            ('preprocess', FunctionTransformer(self._preprocess_vietnamese_text)),
+            ('preprocess', preprocess_transformer),
             ('vectorize', vectorizer)
         ])
-
     def fit(self, df: pd.DataFrame, y: pd.Series = None) -> 'FeatureExtractor':
         """
         Học các transformer từ dữ liệu
@@ -171,7 +190,8 @@ class FeatureExtractor:
         # Xử lý cột phân loại
         for col in self.categorical_columns:
             if col in df.columns:
-                encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
+                # Thay đổi từ sparse=False sang sparse_output=False
+                encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
                 self.categorical_encoders[col] = encoder
                 transformers.append((f'cat_{col}', encoder, [col]))
 
@@ -268,34 +288,41 @@ class FeatureExtractor:
         feature_names = []
 
         for name, transformer, column in self.column_transformer.transformers_:
-            if hasattr(transformer, 'get_feature_names_out'):
-                # Các transformer mới hơn có phương thức get_feature_names_out
-                if isinstance(column, str):
-                    # Một cột duy nhất
-                    col_names = [f"{column}_{feat}" for feat in transformer.get_feature_names_out()]
-                else:
-                    # Nhiều cột
-                    col_names = [f"{col}_{feat}" for col in column for feat in transformer.get_feature_names_out()]
-                feature_names.extend(col_names)
-            elif hasattr(transformer, 'get_feature_names'):
-                # Các transformer cũ hơn có phương thức get_feature_names
-                if isinstance(column, str):
-                    col_names = [f"{column}_{feat}" for feat in transformer.get_feature_names()]
-                else:
-                    col_names = [f"{col}_{feat}" for col in column for feat in transformer.get_feature_names()]
-                feature_names.extend(col_names)
-            elif hasattr(transformer, 'categories_'):
-                # OneHotEncoder
-                if isinstance(column, list) and len(column) == 1:
-                    col = column[0]
-                    categories = transformer.categories_[0]
-                    col_names = [f"{col}_{cat}" for cat in categories]
+            try:
+                # Thử sử dụng get_feature_names_out trước
+                if hasattr(transformer, 'get_feature_names_out'):
+                    if isinstance(column, str):
+                        col_names = [f"{column}_{feat}" for feat in transformer.get_feature_names_out()]
+                    else:
+                        col_names = [f"{col}_{feat}" for col in column for feat in transformer.get_feature_names_out()]
                     feature_names.extend(col_names)
-            else:
-                # Các transformer không có cách lấy tên đặc trưng
+                # Dự phòng cho get_feature_names cũ
+                elif hasattr(transformer, 'get_feature_names'):
+                    if isinstance(column, str):
+                        col_names = [f"{column}_{feat}" for feat in transformer.get_feature_names()]
+                    else:
+                        col_names = [f"{col}_{feat}" for col in column for feat in transformer.get_feature_names()]
+                    feature_names.extend(col_names)
+                # Xử lý OneHotEncoder
+                elif hasattr(transformer, 'categories_'):
+                    if isinstance(column, list) and len(column) == 1:
+                        col = column[0]
+                        categories = transformer.categories_[0]
+                        col_names = [f"{col}_{cat}" for cat in categories]
+                        feature_names.extend(col_names)
+                # Xử lý FunctionTransformer và các transformer khác không có get_feature_names
+                else:
+                    if isinstance(column, str):
+                        feature_names.append(column)
+                    else:
+                        feature_names.extend(column)
+            except Exception as e:
+                # Ghi log lỗi nhưng không làm dừng tiến trình
+                logger.warning(f"Lỗi khi lấy tên đặc trưng từ transformer {name}: {str(e)}")
+                # Sử dụng tên cột gốc làm dự phòng
                 if isinstance(column, str):
                     feature_names.append(column)
-                else:
+                elif isinstance(column, list):
                     feature_names.extend(column)
 
         return feature_names
@@ -352,22 +379,3 @@ class FeatureExtractor:
             feature_importance = feature_importance[:top_n]
 
         return feature_importance
-
-
-# Helper class
-class FunctionTransformer:
-    """
-    Transformer áp dụng một hàm lên dữ liệu
-    """
-
-    def __init__(self, func):
-        self.func = func
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X):
-        if isinstance(X, pd.Series):
-            return X.apply(self.func)
-        else:
-            return [self.func(x) for x in X]
