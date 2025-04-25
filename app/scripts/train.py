@@ -164,6 +164,8 @@ class ModelTrainer:
 
         return feature_extractor
 
+    # Chỉnh sửa hàm _handle_class_imbalance trong class ModelTrainer
+
     def _handle_class_imbalance(self, X: np.ndarray, y: np.ndarray, target_type: str) -> Tuple[np.ndarray, np.ndarray]:
         """
         Xử lý mất cân bằng dữ liệu
@@ -221,22 +223,29 @@ class ModelTrainer:
                 from imblearn.under_sampling import RandomUnderSampler, NearMiss
                 from imblearn.combine import SMOTEENN, SMOTETomek
 
-                # Khởi tạo resampler tương ứng
-                if strategy == 'smote':
-                    resampler = SMOTE(random_state=constants.DEFAULT_RANDOM_STATE)
-                elif strategy == 'adasyn':
-                    resampler = ADASYN(random_state=constants.DEFAULT_RANDOM_STATE)
-                elif strategy == 'smoteenn':
-                    resampler = SMOTEENN(random_state=constants.DEFAULT_RANDOM_STATE)
-                elif strategy == 'smotetomek':
-                    resampler = SMOTETomek(random_state=constants.DEFAULT_RANDOM_STATE)
-                elif strategy == 'undersampling':
-                    resampler = RandomUnderSampler(random_state=constants.DEFAULT_RANDOM_STATE)
-                elif strategy == 'nearmiss':
-                    resampler = NearMiss()
+                # Kiểm tra xem mỗi lớp có đủ mẫu cho SMOTE hay không
+                if strategy in ['smote', 'smoteenn', 'smotetomek'] and min_samples < 6:
+                    logger.warning(f"Không đủ mẫu cho SMOTE (min_samples={min_samples} < 6), sử dụng RandomOverSampler")
+                    from imblearn.over_sampling import RandomOverSampler
+                    resampler = RandomOverSampler(random_state=constants.DEFAULT_RANDOM_STATE)
                 else:
-                    logger.warning(f"Chiến lược {strategy} không được hỗ trợ, sử dụng SMOTE")
-                    resampler = SMOTE(random_state=constants.DEFAULT_RANDOM_STATE)
+                    # Khởi tạo resampler tương ứng
+                    if strategy == 'smote':
+                        resampler = SMOTE(random_state=constants.DEFAULT_RANDOM_STATE)
+                    elif strategy == 'adasyn':
+                        resampler = ADASYN(random_state=constants.DEFAULT_RANDOM_STATE)
+                    elif strategy == 'smoteenn':
+                        resampler = SMOTEENN(random_state=constants.DEFAULT_RANDOM_STATE)
+                    elif strategy == 'smotetomek':
+                        resampler = SMOTETomek(random_state=constants.DEFAULT_RANDOM_STATE)
+                    elif strategy == 'undersampling':
+                        resampler = RandomUnderSampler(random_state=constants.DEFAULT_RANDOM_STATE)
+                    elif strategy == 'nearmiss':
+                        resampler = NearMiss()
+                    else:
+                        logger.warning(f"Chiến lược {strategy} không được hỗ trợ, sử dụng RandomOverSampler")
+                        from imblearn.over_sampling import RandomOverSampler
+                        resampler = RandomOverSampler(random_state=constants.DEFAULT_RANDOM_STATE)
 
                 # Thực hiện resampling
                 X_resampled, y_resampled = resampler.fit_resample(X, y)
@@ -251,7 +260,6 @@ class ModelTrainer:
         else:
             logger.info("Không xử lý mất cân bằng dữ liệu theo cấu hình")
             return X, y
-
     def _create_model(self, model_type: str) -> Any:
         """
         Tạo mô hình phân loại
@@ -434,8 +442,12 @@ class ModelTrainer:
             logger.info(f"Mã hóa nhãn HachToan từ kiểu {y.dtype}")
             from sklearn.preprocessing import LabelEncoder
             encoder = LabelEncoder()
-            y = encoder.fit_transform(y)
+            # Fit encoder trước để học các lớp
+            encoder.fit(y)
+            # Lưu encoder cho việc giải mã sau này
             self.label_encoders['hachtoan'] = encoder
+            # Chuyển đổi nhãn thành số nguyên từ 0 đến n_classes-1
+            y = encoder.transform(y)
 
         # Trích xuất đặc trưng
         logger.info("Trích xuất đặc trưng...")
@@ -501,6 +513,8 @@ class ModelTrainer:
             except Exception as e:
                 logger.error(f"Lỗi khi lưu feature importance: {str(e)}")
 
+    # Chỉnh sửa hàm train_mahanghua_model trong class ModelTrainer tại app/scripts/train.py
+
     def train_mahanghua_model(self, df: pd.DataFrame) -> None:
         """
         Huấn luyện mô hình dự đoán MaHangHoa
@@ -547,13 +561,17 @@ class ModelTrainer:
         X = df_processed.drop(columns=[self.secondary_target], errors='ignore')
         y = df_processed[self.secondary_target]
 
-        # Mã hóa nhãn nếu cần
+        # Mã hóa nhãn
         if not y.dtype.name == 'int64' and not y.dtype.name == 'int32':
             logger.info(f"Mã hóa nhãn MaHangHoa từ kiểu {y.dtype}")
             from sklearn.preprocessing import LabelEncoder
             encoder = LabelEncoder()
-            y = encoder.fit_transform(y)
+            # Fit encoder trước để học các lớp
+            encoder.fit(y)
+            # Lưu encoder cho việc giải mã sau này
             self.label_encoders['mahanghua'] = encoder
+            # Chuyển đổi nhãn thành số nguyên từ 0 đến n_classes-1
+            y = encoder.transform(y)
 
         # Trích xuất đặc trưng
         logger.info("Trích xuất đặc trưng...")
@@ -619,7 +637,6 @@ class ModelTrainer:
                 self.metadata['models']['mahanghua']['feature_importance'] = top_features
             except Exception as e:
                 logger.error(f"Lỗi khi lưu feature importance: {str(e)}")
-
     def train_outlier_detector(self, df: pd.DataFrame) -> None:
         """
         Huấn luyện mô hình phát hiện outlier

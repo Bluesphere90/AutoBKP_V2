@@ -679,3 +679,91 @@ ValueError: Invalid classes inferred from unique values of `y`.  Expected: [ 0  
  3335]
 2025-04-26 00:42:03,854 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
 2025-04-26 00:42:03,854 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-26 00:53:26,340 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-26 00:53:27,415 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-26 00:53:27,415 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l
+2025-04-26 00:53:27,415 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-26 00:53:27,416 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-26 00:53:27,416 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-26 00:53:27,416 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-26 00:53:27,416 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-26 00:53:27,416 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-26 00:53:27,416 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-26 00:53:27,419 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_sample_data.csv
+2025-04-26 00:53:27,419 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-26 00:53:27,419 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-26 00:53:27,419 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_sample_data.csv
+2025-04-26 00:53:27,446 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-26 00:53:27,450 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-26 00:53:27,450 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-26 00:53:27,450 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-26 00:53:27,453 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\validate_result.json
+2025-04-26 00:53:27,453 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-26 00:53:27,453 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-26 00:53:27,453 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-26 00:53:27,454 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-26 00:53:27,454 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_sample_data.csv
+2025-04-26 00:53:27,456 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-26 00:53:27,456 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_sample_data.csv
+2025-04-26 00:53:27,457 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-26 00:53:27,458 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-26 00:53:27,459 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-26 00:53:27,459 - preprocess - INFO - Số lượng lớp: 15
+2025-04-26 00:53:27,459 - preprocess - INFO - Tỷ lệ mất cân bằng: 8.00
+2025-04-26 00:53:27,459 - preprocess - INFO - Lớp hiếm nhất có 2 mẫu (2.00%)
+2025-04-26 00:53:27,459 - preprocess - INFO - Lớp phổ biến nhất có 16 mẫu (16.00%)
+2025-04-26 00:53:27,460 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-26 00:53:27,460 - preprocess - INFO - Số lượng lớp: 9
+2025-04-26 00:53:27,460 - preprocess - INFO - Tỷ lệ mất cân bằng: 7.00
+2025-04-26 00:53:27,460 - preprocess - INFO - Lớp hiếm nhất có 1 mẫu (2.94%)
+2025-04-26 00:53:27,460 - preprocess - INFO - Lớp phổ biến nhất có 7 mẫu (20.59%)
+2025-04-26 00:53:27,460 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-26 00:53:27,461 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-26 00:53:27,461 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-26 00:53:27,472 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_train_20250426_005327.csv
+2025-04-26 00:53:27,473 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_test_20250426_005327.csv
+2025-04-26 00:53:27,474 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_metadata_20250426_005327.json
+2025-04-26 00:53:27,474 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_metadata_20250426_005327.json
+2025-04-26 00:53:27,474 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-26 00:53:27,474 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_train_20250426_005327.csv
+2025-04-26 00:53:27,474 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_test_20250426_005327.csv
+2025-04-26 00:53:27,516 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-26 00:53:27,517 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-26 00:53:27,517 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-26 00:53:27,518 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-26 00:53:27,518 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-26 00:53:27,518 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-26 00:53:27,519 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_train_20250426_005327.csv
+2025-04-26 00:53:27,520 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_r037_w3l\test_customer_test_20250426_005327.csv
+2025-04-26 00:53:27,522 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-26 00:53:27,522 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 00:53:27,523 - train - INFO - Tạo feature extractor...
+2025-04-26 00:53:27,523 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-26 00:53:27,525 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 00:53:27,530 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 00:53:27,534 - train - INFO - Đã trích xuất 181 đặc trưng
+2025-04-26 00:53:27,535 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 00:53:27,535 - train - INFO - Đã tự động chọn chiến lược: smote
+2025-04-26 00:53:27,749 - train - WARNING - Không đủ mẫu cho SMOTE (min_samples=0 < 6), sử dụng RandomOverSampler
+2025-04-26 00:53:27,752 - train - INFO - Đã xử lý mất cân bằng: 80 -> 165 mẫu
+2025-04-26 00:53:27,752 - train - INFO - Tạo mô hình xgboost cho hachtoan_model
+2025-04-26 00:53:27,774 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 00:53:27,774 - train - INFO - Huấn luyện mô hình...
+2025-04-26 00:53:27,775 - train - ERROR - Lỗi khi huấn luyện mô hình: Invalid classes inferred from unique values of `y`.  Expected: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14], got [1561 1562 1563 1564 1565 2111 2112 2113 2114 2115 3331 3332 3333 3334
+ 3335]
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 1658, in train_customer_model
+    trainer.train_hachtoan_model(train_df)
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 476, in train_hachtoan_model
+    classifier.fit(X_balanced, y_balanced)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 1640, in fit
+    raise ValueError(
+ValueError: Invalid classes inferred from unique values of `y`.  Expected: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14], got [1561 1562 1563 1564 1565 2111 2112 2113 2114 2115 3331 3332 3333 3334
+ 3335]
+2025-04-26 00:53:27,777 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: Invalid classes inferred from unique values of `y`.  Expected: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14], got [1561 1562 1563 1564 1565 2111 2112 2113 2114 2115 3331 3332 3333 3334
+ 3335]
+2025-04-26 00:53:27,777 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
+2025-04-26 00:53:27,777 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo

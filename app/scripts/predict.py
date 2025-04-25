@@ -277,7 +277,11 @@ class ModelPredictor:
 
             # Nếu có label encoder, chuyển đổi ngược lại
             if self.label_encoders and 'hachtoan' in self.label_encoders:
-                hachtoan_value = self.label_encoders['hachtoan'].inverse_transform([hachtoan_value])[0]
+                try:
+                    hachtoan_value = self.label_encoders['hachtoan'].inverse_transform([hachtoan_value])[0]
+                except:
+                    # Nếu không thể chuyển đổi, sử dụng giá trị gốc
+                    pass
 
             # Lấy xác suất cao nhất
             max_prob_idx = np.argmax(hachtoan_prob[0])
@@ -318,7 +322,11 @@ class ModelPredictor:
 
                 # Nếu có label encoder, chuyển đổi ngược lại
                 if self.label_encoders and 'mahanghua' in self.label_encoders:
-                    mahanghua_value = self.label_encoders['mahanghua'].inverse_transform([mahanghua_value])[0]
+                    try:
+                        mahanghua_value = self.label_encoders['mahanghua'].inverse_transform([mahanghua_value])[0]
+                    except:
+                        # Nếu không thể chuyển đổi, sử dụng giá trị gốc
+                        pass
 
                 # Lấy xác suất cao nhất
                 max_prob_idx = np.argmax(mahanghua_prob[0])
@@ -367,7 +375,6 @@ class ModelPredictor:
                 # Không raise lỗi, vì phát hiện outlier không bắt buộc
 
         return result
-
 
 def predict_single_sample(customer_id: str, data: Dict[str, Any], models_dir: str = None,
                           version: str = 'latest') -> Dict[str, Any]:

@@ -147,18 +147,21 @@ class FeatureExtractor:
         # Lưu vectorizer
         self.text_transformers[column] = vectorizer
 
-        # Định nghĩa hàm xử lý đơn giản để truyền vào FunctionTransformer
-        def preprocess_text(X):
-            if isinstance(X, pd.Series):
-                return X.apply(lambda x: self._preprocess_vietnamese_text(x))
+        # Sửa lỗi cả Series và phần tử đơn lẻ
+        def preprocess_fn(texts):
+            if isinstance(texts, pd.DataFrame):
+                return texts[column].apply(self._preprocess_vietnamese_text)
+            elif isinstance(texts, pd.Series):
+                return texts.apply(self._preprocess_vietnamese_text)
+            elif isinstance(texts, np.ndarray):
+                return np.array([self._preprocess_vietnamese_text(text) for text in texts])
             else:
-                # Nếu X là array, chuyển đổi từng phần tử
-                return np.array([self._preprocess_vietnamese_text(x) for x in X])
+                return self._preprocess_vietnamese_text(texts)
 
         # Sử dụng FunctionTransformer từ scikit-learn
         from sklearn.preprocessing import FunctionTransformer
         preprocess_transformer = FunctionTransformer(
-            preprocess_text,
+            preprocess_fn,
             validate=False
         )
 
@@ -166,6 +169,7 @@ class FeatureExtractor:
             ('preprocess', preprocess_transformer),
             ('vectorize', vectorizer)
         ])
+
     def fit(self, df: pd.DataFrame, y: pd.Series = None) -> 'FeatureExtractor':
         """
         Học các transformer từ dữ liệu
