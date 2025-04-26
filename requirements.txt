@@ -12,3 +12,4 @@ pydantic>=1.10.0,<2.0.0
 lightgbm>=3.3.0
 imbalanced-learn>=0.10.0  # Cho xử lý dữ liệu mất cân bằng
 pydantic>=1.10.0,<2.0.0
+pyvi

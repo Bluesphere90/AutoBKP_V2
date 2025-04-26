@@ -1438,9 +1438,10 @@ class IncrementalModelTrainer:
                 'n_samples': len(df)
             }
 
+    # Cập nhật hàm save_models trong class ModelTrainer (app/scripts/train.py)
     def save_models(self) -> Dict[str, str]:
         """
-        Lưu các mô hình đã huấn luyện
+        Lưu các mô hình đã huấn luyện với kiểm tra tính hợp lệ
 
         Returns:
             Dict chứa đường dẫn đến các file đã lưu
@@ -1454,31 +1455,152 @@ class IncrementalModelTrainer:
 
         # Lưu mô hình HachToan
         if self.hachtoan_model is not None:
+            # Kiểm tra mô hình trước khi lưu
+            valid_model = False
+            try:
+                if hasattr(self.hachtoan_model, 'steps') and len(self.hachtoan_model.steps) > 0:
+                    classifier = self.hachtoan_model.steps[-1][1]
+                    if hasattr(classifier, '_Booster') and classifier._Booster is not None:
+                        valid_model = True
+                        logger.info("Đã xác nhận mô hình HachToan hợp lệ trước khi lưu")
+                    else:
+                        logger.warning("Mô hình HachToan không có _Booster valid, có thể gặp lỗi khi tải lại")
+                else:
+                    logger.warning("Mô hình HachToan không có cấu trúc pipeline hợp lệ")
+            except Exception as e:
+                logger.warning(f"Không thể kiểm tra tính hợp lệ của mô hình HachToan: {str(e)}")
+
+            # Tạo thư mục
             hachtoan_dir = os.path.join(model_dir, 'hachtoan')
             os.makedirs(hachtoan_dir, exist_ok=True)
 
-            # Đảm bảo rằng mô hình dự đoán trước khi lưu (điều này khiến nó được đánh dấu là fitted)
-            try:
-                # Tạo một mẫu dữ liệu giả để kiểm tra predict
-                dummy_data = pd.DataFrame({col: ['dummy'] for col in self.feature_extractor.text_columns})
-                for col in self.feature_extractor.categorical_columns:
-                    dummy_data[col] = 'dummy'
-
-                # Gọi predict để đảm bảo mô hình được đánh dấu là fitted
-                self.hachtoan_model.predict(dummy_data)
-            except Exception as e:
-                logger.warning(f"Không thể call predict trước khi lưu: {str(e)}")
-
             # Lưu với phiên bản cụ thể
             hachtoan_path = os.path.join(hachtoan_dir, f'model_{self.version}.joblib')
-            joblib.dump(self.hachtoan_model, hachtoan_path)
+
+            try:
+                # Lưu mô hình với protocol=4 để đảm bảo tương thích tốt nhất
+                joblib.dump(self.hachtoan_model, hachtoan_path, protocol=4, compress=3)
+
+                # Thử tải lại mô hình để kiểm tra
+                test_model = joblib.load(hachtoan_path)
+
+                # Kiểm tra mô hình đã tải
+                if hasattr(test_model, 'steps') and len(test_model.steps) > 0:
+                    classifier = test_model.steps[-1][1]
+                    if hasattr(classifier, '_Booster') and classifier._Booster is not None:
+                        logger.info("Đã xác nhận mô hình tải lại thành công")
+                    else:
+                        logger.warning("Mô hình tải lại thiếu _Booster, có thể có vấn đề")
+
+                # Lưu như phiên bản mới nhất
+                latest_path = os.path.join(hachtoan_dir, 'model_latest.joblib')
+                shutil.copy2(hachtoan_path, latest_path)
+
+                logger.info(f"Đã lưu mô hình HachToan: {hachtoan_path}")
+                saved_files['hachtoan_model'] = hachtoan_path
+            except Exception as e:
+                logger.error(f"Lỗi khi lưu mô hình HachToan: {str(e)}")
+
+        # Lưu mô hình MaHangHoa (tương tự với kiểm tra)
+        if self.mahanghua_model is not None:
+            # Kiểm tra tương tự như HachToan
+            valid_model = False
+            try:
+                if hasattr(self.mahanghua_model, 'steps') and len(self.mahanghua_model.steps) > 0:
+                    classifier = self.mahanghua_model.steps[-1][1]
+                    if hasattr(classifier, '_Booster') and classifier._Booster is not None:
+                        valid_model = True
+                        logger.info("Đã xác nhận mô hình MaHangHoa hợp lệ trước khi lưu")
+                    else:
+                        logger.warning("Mô hình MaHangHoa không có _Booster valid")
+                else:
+                    logger.warning("Mô hình MaHangHoa không có cấu trúc pipeline hợp lệ")
+            except Exception as e:
+                logger.warning(f"Không thể kiểm tra tính hợp lệ của mô hình MaHangHoa: {str(e)}")
+
+            mahanghua_dir = os.path.join(model_dir, 'mahanghua')
+            os.makedirs(mahanghua_dir, exist_ok=True)
+
+            # Lưu với phiên bản cụ thể
+            mahanghua_path = os.path.join(mahanghua_dir, f'model_{self.version}.joblib')
+            try:
+                joblib.dump(self.mahanghua_model, mahanghua_path, protocol=4, compress=3)
+
+                # Lưu như phiên bản mới nhất
+                latest_path = os.path.join(mahanghua_dir, 'model_latest.joblib')
+                shutil.copy2(mahanghua_path, latest_path)
+
+                logger.info(f"Đã lưu mô hình MaHangHoa: {mahanghua_path}")
+                saved_files['mahanghua_model'] = mahanghua_path
+            except Exception as e:
+                logger.error(f"Lỗi khi lưu mô hình MaHangHoa: {str(e)}")
+
+        # Lưu mô hình phát hiện outlier
+        if self.outlier_model is not None:
+            outlier_dir = os.path.join(model_dir, 'outlier')
+            os.makedirs(outlier_dir, exist_ok=True)
+
+            # Lưu với phiên bản cụ thể
+            outlier_path = os.path.join(outlier_dir, f'model_{self.version}.joblib')
+            try:
+                joblib.dump(self.outlier_model, outlier_path, protocol=4, compress=3)
+
+                # Lưu như phiên bản mới nhất
+                latest_path = os.path.join(outlier_dir, 'model_latest.joblib')
+                shutil.copy2(outlier_path, latest_path)
+
+                logger.info(f"Đã lưu mô hình phát hiện outlier: {outlier_path}")
+                saved_files['outlier_model'] = outlier_path
+            except Exception as e:
+                logger.error(f"Lỗi khi lưu mô hình outlier: {str(e)}")
+
+        # Lưu label encoders
+        if self.label_encoders:
+            encoders_dir = os.path.join(model_dir, 'encoders')
+            os.makedirs(encoders_dir, exist_ok=True)
+
+            # Lưu với phiên bản cụ thể
+            encoders_path = os.path.join(encoders_dir, f'label_encoders_{self.version}.joblib')
+            try:
+                joblib.dump(self.label_encoders, encoders_path, protocol=4, compress=3)
+
+                # Lưu như phiên bản mới nhất
+                latest_path = os.path.join(encoders_dir, 'label_encoders_latest.joblib')
+                shutil.copy2(encoders_path, latest_path)
+
+                logger.info(f"Đã lưu label encoders: {encoders_path}")
+                saved_files['label_encoders'] = encoders_path
+            except Exception as e:
+                logger.error(f"Lỗi khi lưu label encoders: {str(e)}")
+
+        # Lưu metadata
+        metadata_dir = os.path.join(model_dir, 'metadata')
+        os.makedirs(metadata_dir, exist_ok=True)
+
+        # Cập nhật thời gian lưu vào metadata
+        self.metadata['saved_timestamp'] = datetime.now().isoformat()
+        self.metadata['saved_paths'] = saved_files
+        self.metadata['model_validation'] = {
+            'hachtoan_valid': self.hachtoan_model is not None,
+            'mahanghua_valid': self.mahanghua_model is not None,
+            'outlier_valid': self.outlier_model is not None,
+            'encoders_valid': bool(self.label_encoders)
+        }
+
+        # Lưu với phiên bản cụ thể
+        metadata_path = os.path.join(metadata_dir, f'model_metadata_{self.version}.json')
+        try:
+            save_metadata(metadata_path, self.metadata)
 
             # Lưu như phiên bản mới nhất
-            latest_path = os.path.join(hachtoan_dir, 'model_latest.joblib')
-            shutil.copy2(hachtoan_path, latest_path)
+            latest_path = os.path.join(metadata_dir, 'model_metadata_latest.json')
+            with open(metadata_path, 'r', encoding='utf-8') as src, open(latest_path, 'w', encoding='utf-8') as dst:
+                dst.write(src.read())
 
-            logger.info(f"Đã lưu mô hình HachToan: {hachtoan_path}")
-            saved_files['hachtoan_model'] = hachtoan_path
+            logger.info(f"Đã lưu metadata: {metadata_path}")
+            saved_files['metadata'] = metadata_path
+        except Exception as e:
+            logger.error(f"Lỗi khi lưu metadata: {str(e)}")
 
         # Dọn dẹp các phiên bản cũ
         cleanup_old_model_versions(self.customer_id, 'hachtoan')

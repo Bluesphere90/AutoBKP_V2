@@ -1,13 +1,13 @@
 {
   "customer_id": "test_customer",
-  "timestamp": "2025-04-26T10:28:35.645537",
-  "version": "20250426_102835",
+  "timestamp": "2025-04-26T10:01:51.345947",
+  "version": "20250426_100151",
   "is_incremental": false,
   "models": {
     "hachtoan": {
-      "training_time": 0.18063831329345703,
+      "training_time": 0.06597089767456055,
       "n_samples": 800,
-      "n_features": 925,
+      "n_features": 950,
       "n_classes": 15,
       "feature_importance": null,
       "class_distribution": {
@@ -1572,11 +1572,11 @@
         "1558": 0,
         "1559": 0,
         "1560": 0,
-        "1561": 62,
-        "1562": 48,
-        "1563": 55,
-        "1564": 45,
-        "1565": 55,
+        "1561": 58,
+        "1562": 58,
+        "1563": 53,
+        "1564": 43,
+        "1565": 53,
         "1566": 0,
         "1567": 0,
         "1568": 0,
@@ -2122,11 +2122,11 @@
         "2108": 0,
         "2109": 0,
         "2110": 0,
-        "2111": 57,
-        "2112": 50,
-        "2113": 45,
-        "2114": 49,
-        "2115": 56,
+        "2111": 55,
+        "2112": 63,
+        "2113": 49,
+        "2114": 50,
+        "2115": 61,
         "2116": 0,
         "2117": 0,
         "2118": 0,
@@ -3342,127 +3342,127 @@
         "3328": 0,
         "3329": 0,
         "3330": 0,
-        "3331": 70,
-        "3332": 62,
-        "3333": 49,
+        "3331": 55,
+        "3332": 48,
+        "3333": 46,
         "3334": 55,
-        "3335": 42
+        "3335": 53
       }
     },
     "mahanghua": {
-      "training_time": 0.5413875579833984,
+      "training_time": 0.47539544105529785,
       "n_samples": 265,
-      "n_features": 384,
+      "n_features": 406,
       "n_classes": 10,
       "feature_importance": [
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_2188889133",
-          "importance": 0.054554302245378494
+          "feature": "MSTNguoiBan_MSTNguoiBan_3366094170",
+          "importance": 0.08665944635868073
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1159165244",
-          "importance": 0.04849035665392876
+          "feature": "MSTNguoiBan_MSTNguoiBan_3248621896",
+          "importance": 0.05755817890167236
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_2720470926",
-          "importance": 0.046477846801280975
+          "feature": "MSTNguoiBan_MSTNguoiBan_3468899424",
+          "importance": 0.036442697048187256
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_3541578195",
-          "importance": 0.031959835439920425
+          "feature": "MSTNguoiBan_MSTNguoiBan_2812973178",
+          "importance": 0.0354880727827549
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1074211089",
-          "importance": 0.03183557093143463
+          "feature": "MSTNguoiBan_MSTNguoiBan_3261697974",
+          "importance": 0.02936943806707859
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_4577297447",
-          "importance": 0.03076050989329815
+          "feature": "MSTNguoiBan_MSTNguoiBan_5732467946",
+          "importance": 0.028120586648583412
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1693916661",
-          "importance": 0.02837853506207466
+          "feature": "MSTNguoiBan_MSTNguoiBan_1923182411",
+          "importance": 0.02780390903353691
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1628453117",
-          "importance": 0.027370672672986984
+          "feature": "MSTNguoiBan_MSTNguoiBan_4032231094",
+          "importance": 0.02688971534371376
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_3032284750",
-          "importance": 0.025749903172254562
+          "feature": "MSTNguoiBan_MSTNguoiBan_2622958898",
+          "importance": 0.025576673448085785
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1631903508",
-          "importance": 0.024036353453993797
+          "feature": "MSTNguoiBan_MSTNguoiBan_2594383196",
+          "importance": 0.024843107908964157
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_3025466696",
-          "importance": 0.023619186133146286
+          "feature": "MSTNguoiBan_MSTNguoiBan_2335973511",
+          "importance": 0.02463565580546856
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1373501007",
-          "importance": 0.022525666281580925
+          "feature": "MSTNguoiBan_MSTNguoiBan_2696363838",
+          "importance": 0.023982016369700432
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_3964542937",
-          "importance": 0.022252433001995087
+          "feature": "MSTNguoiBan_MSTNguoiBan_4090040548",
+          "importance": 0.022291049361228943
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1306543684",
-          "importance": 0.021548934280872345
+          "feature": "MSTNguoiBan_MSTNguoiBan_4536881134",
+          "importance": 0.02162788435816765
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_2014982535",
-          "importance": 0.02142575941979885
+          "feature": "MSTNguoiBan_MSTNguoiBan_1140910506",
+          "importance": 0.02160547487437725
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1216464182",
-          "importance": 0.02097264491021633
+          "feature": "MSTNguoiBan_MSTNguoiBan_3965323458",
+          "importance": 0.021184874698519707
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_3947794350",
-          "importance": 0.020784921944141388
+          "feature": "MSTNguoiBan_MSTNguoiBan_2826818362",
+          "importance": 0.021019183099269867
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1830386242",
-          "importance": 0.020133795216679573
+          "feature": "MSTNguoiBan_MSTNguoiBan_4638663617",
+          "importance": 0.02100459672510624
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1506712364",
-          "importance": 0.018888430669903755
+          "feature": "MSTNguoiBan_MSTNguoiBan_1324910328",
+          "importance": 0.020103154703974724
         },
         {
-          "feature": "MSTNguoiBan_MSTNguoiBan_1234602421",
-          "importance": 0.018039535731077194
+          "feature": "MSTNguoiBan_MSTNguoiBan_2998684565",
+          "importance": 0.019729789346456528
         }
       ],
       "class_distribution": {
-        "0": 23,
-        "1": 26,
-        "2": 26,
-        "3": 19,
-        "4": 29,
-        "5": 39,
-        "6": 31,
-        "7": 31,
-        "8": 18,
-        "9": 23
+        "0": 26,
+        "1": 24,
+        "2": 14,
+        "3": 30,
+        "4": 30,
+        "5": 23,
+        "6": 32,
+        "7": 29,
+        "8": 31,
+        "9": 26
       },
       "condition": "HachToan.startswith('15')"
     },
     "outlier": {
-      "training_time": 0.30614638328552246,
+      "training_time": 0.21507573127746582,
       "n_samples": 800,
-      "n_features": 925,
+      "n_features": 950,
       "method": "isolation_forest",
       "threshold": 0.85
     }
   },
-  "saved_timestamp": "2025-04-26T10:28:36.784902",
+  "saved_timestamp": "2025-04-26T10:01:52.176772",
   "saved_paths": {
-    "hachtoan_model": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\hachtoan\\model_20250426_102835.joblib",
-    "mahanghua_model": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\mahanghua\\model_20250426_102835.joblib",
-    "outlier_model": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\outlier\\model_20250426_102835.joblib",
-    "label_encoders": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\encoders\\label_encoders_20250426_102835.joblib"
+    "hachtoan_model": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\hachtoan\\model_20250426_100151.joblib",
+    "mahanghua_model": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\mahanghua\\model_20250426_100151.joblib",
+    "outlier_model": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\outlier\\model_20250426_100151.joblib",
+    "label_encoders": "D:\\Python\\AutoBKP_V2\\volumes\\models\\test_customer\\encoders\\label_encoders_20250426_100151.joblib"
   }
 }
