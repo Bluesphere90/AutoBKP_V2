@@ -45,8 +45,8 @@ def preprocess_vietnamese_text_global(text):
     # Loại bỏ dấu câu và ký tự đặc biệt
     text = re.sub(r'[^\w\s]', ' ', text)
 
-    # Loại bỏ số
-    text = re.sub(r'\d+', ' ', text)
+    # Loại bỏ số => giữ lại số
+    # text = re.sub(r'\d+', ' ', text)
 
     # Loại bỏ khoảng trắng thừa
     text = re.sub(r'\s+', ' ', text).strip()

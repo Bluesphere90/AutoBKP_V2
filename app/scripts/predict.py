@@ -314,70 +314,48 @@ class ModelPredictor:
         try:
             # Thử dự đoán thông thường
             try:
-                # Kiểm tra xem mô hình đã được fit chưa
-                if hasattr(self.hachtoan_model, 'steps') and len(self.hachtoan_model.steps) > 0:
-                    classifier = self.hachtoan_model.steps[-1][1]
-                    if hasattr(classifier, '_Booster') and classifier._Booster is not None:
-                        # Mô hình đã fit, dự đoán bình thường
-                        hachtoan_pred = self.hachtoan_model.predict(df)
-                        hachtoan_prob = self.hachtoan_model.predict_proba(df)
-                    else:
-                        # Không thể dự đoán, trả về kết quả mặc định
-                        result["warnings"].append("Mô hình HachToan chưa được fit đúng cách")
-                        hachtoan_value = "1561"  # Giá trị mặc định hợp lý
-                        hachtoan_probability = 0.5
-                        result["prediction"]["HachToan"] = str(hachtoan_value)
-                        result["probabilities"]["HachToan"] = float(hachtoan_probability)
-                        return result
+                hachtoan_pred = self.hachtoan_model.predict(df)
+                hachtoan_prob = self.hachtoan_model.predict_proba(df)
+
+                # Xử lý kết quả dự đoán
+                if isinstance(hachtoan_pred, np.ndarray):
+                    hachtoan_value = hachtoan_pred[0]
                 else:
-                    # Không có pipeline đúng, trả về kết quả mặc định
-                    result["warnings"].append("Mô hình HachToan không có cấu trúc pipeline hợp lệ")
-                    hachtoan_value = "1561"  # Giá trị mặc định hợp lý
-                    hachtoan_probability = 0.5
-                    result["prediction"]["HachToan"] = str(hachtoan_value)
-                    result["probabilities"]["HachToan"] = float(hachtoan_probability)
-                    return result
+                    hachtoan_value = hachtoan_pred
+
+                # Nếu có label encoder, chuyển đổi ngược lại
+                if self.label_encoders and 'hachtoan' in self.label_encoders:
+                    try:
+                        hachtoan_value = self.label_encoders['hachtoan'].inverse_transform([hachtoan_value])[0]
+                    except Exception as e:
+                        logger.warning(f"Không thể giải mã HachToan: {str(e)}")
+                        # Nếu không thể chuyển đổi, sử dụng giá trị gốc
+
+                # Lấy xác suất cao nhất
+                max_prob_idx = np.argmax(hachtoan_prob[0])
+                hachtoan_probability = hachtoan_prob[0][max_prob_idx]
+
+                # Thêm vào kết quả
+                result["prediction"]["HachToan"] = str(hachtoan_value)
+                result["probabilities"]["HachToan"] = float(hachtoan_probability)
+
+                # Cảnh báo nếu xác suất thấp
+                if hachtoan_probability < constants.MIN_PROBABILITY_THRESHOLD:
+                    result["warnings"].append(constants.WARNINGS["low_probability"])
 
             except Exception as e:
                 logger.warning(f"Lỗi khi dự đoán HachToan thông thường: {str(e)}")
                 result["warnings"].append(f"Không thể dự đoán HachToan, sử dụng giá trị mặc định")
                 # Sử dụng giá trị mặc định thay vì crash
-                hachtoan_value = "1561"  # Giá trị mặc định hợp lý
-                hachtoan_probability = 0.5
-                result["prediction"]["HachToan"] = str(hachtoan_value)
-                result["probabilities"]["HachToan"] = float(hachtoan_probability)
-                return result
-
-            # Xử lý kết quả dự đoán
-            if isinstance(hachtoan_pred, np.ndarray):
-                hachtoan_value = hachtoan_pred[0]
-            else:
-                hachtoan_value = hachtoan_pred
-
-            # Nếu có label encoder, chuyển đổi ngược lại
-            if self.label_encoders and 'hachtoan' in self.label_encoders:
-                try:
-                    hachtoan_value = self.label_encoders['hachtoan'].inverse_transform([hachtoan_value])[0]
-                except Exception as e:
-                    logger.warning(f"Không thể giải mã HachToan: {str(e)}")
-                    # Nếu không thể chuyển đổi, sử dụng giá trị gốc
-
-            # Lấy xác suất cao nhất
-            max_prob_idx = np.argmax(hachtoan_prob[0])
-            hachtoan_probability = hachtoan_prob[0][max_prob_idx]
-
-            # Thêm vào kết quả
-            result["prediction"]["HachToan"] = str(hachtoan_value)
-            result["probabilities"]["HachToan"] = float(hachtoan_probability)
-
-            # Cảnh báo nếu xác suất thấp
-            if hachtoan_probability < constants.MIN_PROBABILITY_THRESHOLD:
-                result["warnings"].append(constants.WARNINGS["low_probability"])
+                result["prediction"]["HachToan"] = "1561"  # Giá trị mặc định hợp lý
+                result["probabilities"]["HachToan"] = 0.5
 
         except Exception as e:
             logger.error(f"Lỗi khi dự đoán HachToan: {str(e)}")
             result["warnings"].append(f"Lỗi dự đoán HachToan: {str(e)}")
-            # Không làm gì thêm, chỉ ghi nhận lỗi và tiếp tục
+            # Đảm bảo có giá trị mặc định nếu xảy ra lỗi
+            result["prediction"]["HachToan"] = "1561"  # Giá trị mặc định hợp lý
+            result["probabilities"]["HachToan"] = 0.5
 
         # === 2. Dự đoán MaHangHoa nếu cần ===
         try:
@@ -425,7 +403,7 @@ class ModelPredictor:
                 except Exception as e:
                     logger.warning(f"Lỗi khi dự đoán MaHangHoa: {str(e)}")
                     result["warnings"].append(f"Không thể dự đoán MaHangHoa: {str(e)}")
-                    # Sử dụng giá trị mặc định
+                    # Sử dụng giá trị mặc định nếu có lỗi
                     result["prediction"]["MaHangHoa"] = "MH001"
                     result["probabilities"]["MaHangHoa"] = 0.5
             else:
@@ -434,7 +412,6 @@ class ModelPredictor:
         except Exception as e:
             logger.error(f"Lỗi khi dự đoán MaHangHoa: {str(e)}")
             result["warnings"].append(f"Lỗi xử lý MaHangHoa: {str(e)}")
-            # Không làm gì thêm, chỉ ghi nhận lỗi và tiếp tục
 
         # === 3. Phát hiện outlier nếu có mô hình ===
         if self.outlier_model is not None:
@@ -475,6 +452,12 @@ class ModelPredictor:
             except Exception as e:
                 logger.warning(f"Lỗi khi phát hiện outlier: {str(e)}")
                 # Không làm gì thêm, tiếp tục với kết quả hiện tại
+
+        # Đảm bảo các giá trị cần có đều tồn tại trước khi trả về
+        if "HachToan" not in result["prediction"]:
+            result["prediction"]["HachToan"] = "1561"  # Giá trị mặc định hợp lý
+            result["probabilities"]["HachToan"] = 0.5
+            result["warnings"].append("Không thể dự đoán HachToan, sử dụng giá trị mặc định")
 
         return result
 
@@ -536,6 +519,7 @@ def predict_batch(customer_id: str, input_file: str, output_file: str = None,
     result_df = df.copy()
 
     # Thêm cột cho kết quả dự đoán
+    # Đảm bảo tạo các cột mới với giá trị mặc định
     result_df['Predicted_HachToan'] = None
     result_df['HachToan_Probability'] = None
     result_df['Predicted_MaHangHoa'] = None
@@ -572,7 +556,11 @@ def predict_batch(customer_id: str, input_file: str, output_file: str = None,
 
             result_df.at[idx, 'Is_Outlier'] = prediction.get('outlier_warning', False)
             result_df.at[idx, 'Outlier_Score'] = prediction.get('outlier_score')
-            result_df.at[idx, 'Warnings'] = '; '.join(prediction.get('warnings', []))
+
+            # Convert warnings list to string for CSV storage
+            warnings = prediction.get('warnings', [])
+            if warnings:
+                result_df.at[idx, 'Warnings'] = '; '.join(warnings)
 
         except Exception as e:
             logger.error(f"Lỗi khi dự đoán dòng {idx}: {str(e)}")
@@ -590,8 +578,15 @@ def predict_batch(customer_id: str, input_file: str, output_file: str = None,
     # Đảm bảo thư mục đầu ra tồn tại
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
+    # Kiểm tra và xác nhận tất cả các cột tồn tại
+    for col in ['Predicted_HachToan', 'HachToan_Probability', 'Predicted_MaHangHoa',
+                'MaHangHoa_Probability', 'Is_Outlier', 'Outlier_Score', 'Warnings']:
+        if col not in result_df.columns:
+            logger.warning(f"Cột {col} không tồn tại, tạo mới với giá trị None")
+            result_df[col] = None
+
     # Lưu kết quả
-    result_df.to_csv(output_file, index=False, encoding='utf-8-sig')
+    result_df.to_csv(output_file, index=False, encoding='utf-8-sig', sep=";")
     logger.info(f"Đã lưu kết quả dự đoán vào: {output_file}")
 
     # Lưu metadata
@@ -603,14 +598,14 @@ def predict_batch(customer_id: str, input_file: str, output_file: str = None,
         "model_version": version,
         "num_samples": len(df),
         "elapsed_time": elapsed_time,
-        "success_rate": (len(df) - result_df['Warnings'].str.contains('Error', na=False).sum()) / len(df)
+        "success_rate": (len(df) - result_df['Warnings'].fillna('').str.contains('Error').sum()) / len(df) if len(
+            df) > 0 else 0
     }
 
     metadata_file = os.path.splitext(output_file)[0] + '_metadata.json'
     save_metadata(metadata_file, metadata)
 
     return output_file
-
 
 def main():
     """Hàm chính để chạy script từ command line"""
