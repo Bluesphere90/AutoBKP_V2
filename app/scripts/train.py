@@ -1440,12 +1440,12 @@ class IncrementalModelTrainer:
 
     def save_models(self) -> Dict[str, str]:
         """
-        Lưu các mô hình đã huấn luyện tăng cường
+        Lưu các mô hình đã huấn luyện
 
         Returns:
             Dict chứa đường dẫn đến các file đã lưu
         """
-        logger.info(f"Lưu các mô hình đã huấn luyện tăng cường cho khách hàng {self.customer_id}")
+        logger.info(f"Lưu các mô hình đã huấn luyện cho khách hàng {self.customer_id}")
 
         # Tạo thư mục lưu trữ
         model_dir = path_manager.get_customer_model_path(self.customer_id)
@@ -1457,6 +1457,18 @@ class IncrementalModelTrainer:
             hachtoan_dir = os.path.join(model_dir, 'hachtoan')
             os.makedirs(hachtoan_dir, exist_ok=True)
 
+            # Đảm bảo rằng mô hình dự đoán trước khi lưu (điều này khiến nó được đánh dấu là fitted)
+            try:
+                # Tạo một mẫu dữ liệu giả để kiểm tra predict
+                dummy_data = pd.DataFrame({col: ['dummy'] for col in self.feature_extractor.text_columns})
+                for col in self.feature_extractor.categorical_columns:
+                    dummy_data[col] = 'dummy'
+
+                # Gọi predict để đảm bảo mô hình được đánh dấu là fitted
+                self.hachtoan_model.predict(dummy_data)
+            except Exception as e:
+                logger.warning(f"Không thể call predict trước khi lưu: {str(e)}")
+
             # Lưu với phiên bản cụ thể
             hachtoan_path = os.path.join(hachtoan_dir, f'model_{self.version}.joblib')
             joblib.dump(self.hachtoan_model, hachtoan_path)
@@ -1467,86 +1479,6 @@ class IncrementalModelTrainer:
 
             logger.info(f"Đã lưu mô hình HachToan: {hachtoan_path}")
             saved_files['hachtoan_model'] = hachtoan_path
-        elif self.existing_hachtoan_model is not None:
-            # Nếu không có mô hình mới, sử dụng mô hình hiện có
-            saved_files['hachtoan_model'] = os.path.join(model_dir, 'hachtoan', 'model_latest.joblib')
-
-        # Lưu mô hình MaHangHoa
-        if self.mahanghua_model is not None:
-            mahanghua_dir = os.path.join(model_dir, 'mahanghua')
-            os.makedirs(mahanghua_dir, exist_ok=True)
-
-            # Lưu với phiên bản cụ thể
-            mahanghua_path = os.path.join(mahanghua_dir, f'model_{self.version}.joblib')
-            joblib.dump(self.mahanghua_model, mahanghua_path)
-
-            # Lưu như phiên bản mới nhất
-            latest_path = os.path.join(mahanghua_dir, 'model_latest.joblib')
-            shutil.copy2(mahanghua_path, latest_path)
-
-            logger.info(f"Đã lưu mô hình MaHangHoa: {mahanghua_path}")
-            saved_files['mahanghua_model'] = mahanghua_path
-        elif self.existing_mahanghua_model is not None:
-            # Nếu không có mô hình mới, sử dụng mô hình hiện có
-            saved_files['mahanghua_model'] = os.path.join(model_dir, 'mahanghua', 'model_latest.joblib')
-
-        # Lưu mô hình phát hiện outlier
-        if self.outlier_model is not None:
-            outlier_dir = os.path.join(model_dir, 'outlier')
-            os.makedirs(outlier_dir, exist_ok=True)
-
-            # Lưu với phiên bản cụ thể
-            outlier_path = os.path.join(outlier_dir, f'model_{self.version}.joblib')
-            joblib.dump(self.outlier_model, outlier_path)
-
-            # Lưu như phiên bản mới nhất
-            latest_path = os.path.join(outlier_dir, 'model_latest.joblib')
-            shutil.copy2(outlier_path, latest_path)
-
-            logger.info(f"Đã lưu mô hình phát hiện outlier: {outlier_path}")
-            saved_files['outlier_model'] = outlier_path
-        elif self.existing_outlier_model is not None:
-            # Nếu không có mô hình mới, sử dụng mô hình hiện có
-            saved_files['outlier_model'] = os.path.join(model_dir, 'outlier', 'model_latest.joblib')
-
-        # Lưu label encoders
-        if self.label_encoders:
-            encoders_dir = os.path.join(model_dir, 'encoders')
-            os.makedirs(encoders_dir, exist_ok=True)
-
-            # Lưu với phiên bản cụ thể
-            encoders_path = os.path.join(encoders_dir, f'label_encoders_{self.version}.joblib')
-            joblib.dump(self.label_encoders, encoders_path)
-
-            # Lưu như phiên bản mới nhất
-            latest_path = os.path.join(encoders_dir, 'label_encoders_latest.joblib')
-            shutil.copy2(encoders_path, latest_path)
-
-            logger.info(f"Đã lưu label encoders: {encoders_path}")
-            saved_files['label_encoders'] = encoders_path
-        elif self.existing_label_encoders is not None:
-            # Nếu không có encoder mới, sử dụng encoder hiện có
-            saved_files['label_encoders'] = os.path.join(model_dir, 'encoders', 'label_encoders_latest.joblib')
-
-        # Lưu metadata
-        metadata_dir = os.path.join(model_dir, 'metadata')
-        os.makedirs(metadata_dir, exist_ok=True)
-
-        # Cập nhật thời gian lưu vào metadata
-        self.metadata['saved_timestamp'] = datetime.now().isoformat()
-        self.metadata['saved_paths'] = saved_files
-
-        # Lưu với phiên bản cụ thể
-        metadata_path = os.path.join(metadata_dir, f'model_metadata_{self.version}.json')
-        save_metadata(metadata_path, self.metadata)
-
-        # Lưu như phiên bản mới nhất
-        latest_path = os.path.join(metadata_dir, 'model_metadata_latest.json')
-        with open(metadata_path, 'r', encoding='utf-8') as src, open(latest_path, 'w', encoding='utf-8') as dst:
-            dst.write(src.read())
-
-        logger.info(f"Đã lưu metadata: {metadata_path}")
-        saved_files['metadata'] = metadata_path
 
         # Dọn dẹp các phiên bản cũ
         cleanup_old_model_versions(self.customer_id, 'hachtoan')

@@ -5,11 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3256e17-2a41-472b-84a3-11316b22456f" name="Changes" comment="Fix bug">
-      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/hachtoan/model_20250426_010509.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/encoders/label_encoders_20250426_094036.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/encoders/label_encoders_20250426_095055.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/encoders/label_encoders_20250426_095332.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/encoders/label_encoders_latest.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/hachtoan/model_20250426_012710.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/hachtoan/model_20250426_093217.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/hachtoan/model_20250426_094036.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/hachtoan/model_20250426_095055.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/hachtoan/model_20250426_095332.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/hachtoan/model_latest.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/mahanghua/model_20250426_094036.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/mahanghua/model_20250426_095055.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/mahanghua/model_20250426_095332.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/mahanghua/model_latest.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/metadata/model_metadata_20250426_094036.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/metadata/model_metadata_20250426_095055.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/metadata/model_metadata_20250426_095332.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/metadata/model_metadata_latest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/outlier/model_20250426_094036.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/outlier/model_20250426_095055.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/outlier/model_20250426_095332.joblib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/models/test_customer/outlier/model_latest.joblib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/predict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/utils/feature_extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/feature_extraction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_autobkp.log" beforeDir="false" afterPath="$PROJECT_DIR$/test_autobkp.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_autobkp.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_autobkp.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745603699470</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fix bug">
+      <option name="closed" value="true" />
+      <created>1745605779977</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1745605779977</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

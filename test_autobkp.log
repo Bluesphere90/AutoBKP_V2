@@ -1278,3 +1278,763 @@ _pickle.PicklingError: Can't pickle <function FeatureExtractor._create_text_tran
 2025-04-26 01:27:10,575 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.column_preprocessor at 0x00000113964C7740>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.column_preprocessor
 2025-04-26 01:27:10,575 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
 2025-04-26 01:27:10,575 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-26 09:32:16,008 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-26 09:32:17,563 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-26 09:32:17,563 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8
+2025-04-26 09:32:17,565 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-26 09:32:17,565 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-26 09:32:17,565 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-26 09:32:17,565 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-26 09:32:17,565 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-26 09:32:17,565 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-26 09:32:17,566 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-26 09:32:17,568 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_sample_data.csv
+2025-04-26 09:32:17,568 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-26 09:32:17,568 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-26 09:32:17,568 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_sample_data.csv
+2025-04-26 09:32:17,605 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-26 09:32:17,611 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-26 09:32:17,611 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-26 09:32:17,611 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-26 09:32:17,612 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\validate_result.json
+2025-04-26 09:32:17,614 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-26 09:32:17,614 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-26 09:32:17,614 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-26 09:32:17,614 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-26 09:32:17,615 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_sample_data.csv
+2025-04-26 09:32:17,616 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-26 09:32:17,616 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_sample_data.csv
+2025-04-26 09:32:17,617 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-26 09:32:17,618 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-26 09:32:17,619 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-26 09:32:17,619 - preprocess - INFO - Số lượng lớp: 15
+2025-04-26 09:32:17,620 - preprocess - INFO - Tỷ lệ mất cân bằng: 6.00
+2025-04-26 09:32:17,620 - preprocess - INFO - Lớp hiếm nhất có 2 mẫu (2.00%)
+2025-04-26 09:32:17,620 - preprocess - INFO - Lớp phổ biến nhất có 12 mẫu (12.00%)
+2025-04-26 09:32:17,622 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-26 09:32:17,622 - preprocess - INFO - Số lượng lớp: 9
+2025-04-26 09:32:17,622 - preprocess - INFO - Tỷ lệ mất cân bằng: 6.00
+2025-04-26 09:32:17,622 - preprocess - INFO - Lớp hiếm nhất có 1 mẫu (3.33%)
+2025-04-26 09:32:17,623 - preprocess - INFO - Lớp phổ biến nhất có 6 mẫu (20.00%)
+2025-04-26 09:32:17,623 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-26 09:32:17,624 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-26 09:32:17,624 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-26 09:32:17,628 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_train_20250426_093217.csv
+2025-04-26 09:32:17,629 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_test_20250426_093217.csv
+2025-04-26 09:32:17,629 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_metadata_20250426_093217.json
+2025-04-26 09:32:17,629 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_metadata_20250426_093217.json
+2025-04-26 09:32:17,630 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-26 09:32:17,630 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_train_20250426_093217.csv
+2025-04-26 09:32:17,630 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_test_20250426_093217.csv
+2025-04-26 09:32:17,683 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-26 09:32:17,684 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-26 09:32:17,684 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-26 09:32:17,684 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-26 09:32:17,686 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-26 09:32:17,686 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-26 09:32:17,687 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_train_20250426_093217.csv
+2025-04-26 09:32:17,688 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_jp0kljv8\test_customer_test_20250426_093217.csv
+2025-04-26 09:32:17,689 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-26 09:32:17,689 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:32:17,691 - train - INFO - Tạo feature extractor...
+2025-04-26 09:32:17,691 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-26 09:32:17,692 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:32:17,704 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:32:17,707 - train - INFO - Đã trích xuất 180 đặc trưng
+2025-04-26 09:32:17,707 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:32:17,708 - train - INFO - Tỷ lệ mất cân bằng 4.50 <= 10, không cần xử lý
+2025-04-26 09:32:17,709 - train - INFO - Tạo mô hình xgboost cho hachtoan_model
+2025-04-26 09:32:17,757 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:32:17,757 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:32:17,757 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:32:17,758 - train - INFO - Hoàn tất huấn luyện trong 0.07 giây
+2025-04-26 09:32:17,759 - train - INFO - Bắt đầu huấn luyện mô hình MaHangHoa cho khách hàng test_customer
+2025-04-26 09:32:17,759 - train - INFO - Lọc dữ liệu theo điều kiện: 24/80 dòng thỏa mãn
+2025-04-26 09:32:17,760 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:32:17,762 - train - INFO - Mã hóa nhãn MaHangHoa từ kiểu object
+2025-04-26 09:32:17,762 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:32:17,766 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:32:17,768 - train - INFO - Đã trích xuất 78 đặc trưng
+2025-04-26 09:32:17,768 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:32:17,769 - train - INFO - Tỷ lệ mất cân bằng 5.00 <= 10, không cần xử lý
+2025-04-26 09:32:17,769 - train - INFO - Tạo mô hình xgboost cho mahanghua_model
+2025-04-26 09:32:17,769 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:32:17,770 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:32:17,897 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:32:17,897 - train - INFO - Hoàn tất huấn luyện trong 0.14 giây
+2025-04-26 09:32:17,899 - train - INFO - Bắt đầu huấn luyện mô hình phát hiện outlier cho khách hàng test_customer
+2025-04-26 09:32:17,899 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:32:17,901 - train - INFO - Trích xuất đặc trưng cho phát hiện outlier...
+2025-04-26 09:32:17,907 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:32:17,911 - train - INFO - Đã trích xuất 180 đặc trưng
+2025-04-26 09:32:17,911 - train - INFO - Tạo mô hình phát hiện outlier isolation_forest
+2025-04-26 09:32:18,012 - train - INFO - Huấn luyện mô hình phát hiện outlier...
+2025-04-26 09:32:18,097 - train - INFO - Hoàn tất huấn luyện mô hình phát hiện outlier trong 0.20 giây
+2025-04-26 09:32:18,098 - train - INFO - Lưu các mô hình đã huấn luyện cho khách hàng test_customer
+2025-04-26 09:32:18,099 - train - ERROR - Lỗi khi huấn luyện mô hình: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.column_preprocessor at 0x0000028069BE7560>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.column_preprocessor
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 1690, in train_customer_model
+    saved_files = trainer.save_models()
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\train.py", line 748, in save_models
+    joblib.dump(self.hachtoan_model, hachtoan_path)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 553, in dump
+    NumpyPickler(f, protocol=protocol).dump(value)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 481, in dump
+    self.save(obj)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 926, in save_list
+    self._batch_appends(obj)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 950, in _batch_appends
+    save(x)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 881, in save_tuple
+    save(element)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 597, in save
+    self.save_reduce(obj=obj, *rv)
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 711, in save_reduce
+    save(state)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 966, in save_dict
+    self._batch_setitems(obj.items())
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 990, in _batch_setitems
+    save(v)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 355, in save
+    return Pickler.save(self, obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 554, in save
+    f(self, obj)  # Call unbound method with explicit self
+    ^^^^^^^^^^^^
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\pickle.py", line 1063, in save_global
+    raise PicklingError(
+_pickle.PicklingError: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.column_preprocessor at 0x0000028069BE7560>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.column_preprocessor
+2025-04-26 09:32:18,106 - test_autobkp - ERROR - Lỗi khi huấn luyện mô hình: Can't pickle <function FeatureExtractor._create_text_transformer.<locals>.column_preprocessor at 0x0000028069BE7560>: it's not found as app.utils.feature_extraction.FeatureExtractor._create_text_transformer.<locals>.column_preprocessor
+2025-04-26 09:32:18,107 - test_autobkp - ERROR - ✗ Kiểm tra chức năng huấn luyện thất bại
+2025-04-26 09:32:18,107 - test_autobkp - WARNING - Dừng các bài kiểm tra tiếp theo
+2025-04-26 09:40:35,633 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-26 09:40:36,802 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-26 09:40:36,803 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s
+2025-04-26 09:40:36,803 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-26 09:40:36,803 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-26 09:40:36,803 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-26 09:40:36,804 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-26 09:40:36,804 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-26 09:40:36,804 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-26 09:40:36,804 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-26 09:40:36,806 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_sample_data.csv
+2025-04-26 09:40:36,807 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-26 09:40:36,807 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-26 09:40:36,807 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_sample_data.csv
+2025-04-26 09:40:36,825 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-26 09:40:36,830 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-26 09:40:36,831 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-26 09:40:36,831 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-26 09:40:36,832 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\validate_result.json
+2025-04-26 09:40:36,832 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-26 09:40:36,832 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-26 09:40:36,833 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-26 09:40:36,833 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-26 09:40:36,833 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_sample_data.csv
+2025-04-26 09:40:36,835 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-26 09:40:36,835 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_sample_data.csv
+2025-04-26 09:40:36,836 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-26 09:40:36,838 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-26 09:40:36,839 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-26 09:40:36,840 - preprocess - INFO - Số lượng lớp: 15
+2025-04-26 09:40:36,840 - preprocess - INFO - Tỷ lệ mất cân bằng: 3.00
+2025-04-26 09:40:36,840 - preprocess - INFO - Lớp hiếm nhất có 3 mẫu (3.00%)
+2025-04-26 09:40:36,841 - preprocess - INFO - Lớp phổ biến nhất có 9 mẫu (9.00%)
+2025-04-26 09:40:36,841 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-26 09:40:36,842 - preprocess - INFO - Số lượng lớp: 8
+2025-04-26 09:40:36,842 - preprocess - INFO - Tỷ lệ mất cân bằng: 9.00
+2025-04-26 09:40:36,842 - preprocess - INFO - Lớp hiếm nhất có 1 mẫu (2.94%)
+2025-04-26 09:40:36,842 - preprocess - INFO - Lớp phổ biến nhất có 9 mẫu (26.47%)
+2025-04-26 09:40:36,843 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-26 09:40:36,844 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-26 09:40:36,844 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-26 09:40:36,848 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_train_20250426_094036.csv
+2025-04-26 09:40:36,849 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_test_20250426_094036.csv
+2025-04-26 09:40:36,849 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_metadata_20250426_094036.json
+2025-04-26 09:40:36,849 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_metadata_20250426_094036.json
+2025-04-26 09:40:36,849 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-26 09:40:36,851 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_train_20250426_094036.csv
+2025-04-26 09:40:36,851 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_test_20250426_094036.csv
+2025-04-26 09:40:36,895 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-26 09:40:36,895 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-26 09:40:36,895 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-26 09:40:36,896 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-26 09:40:36,896 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-26 09:40:36,896 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-26 09:40:36,897 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_train_20250426_094036.csv
+2025-04-26 09:40:36,898 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_o_ffhg4s\test_customer_test_20250426_094036.csv
+2025-04-26 09:40:36,899 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-26 09:40:36,900 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:40:36,901 - train - INFO - Tạo feature extractor...
+2025-04-26 09:40:36,902 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-26 09:40:36,902 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:40:36,908 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:40:36,911 - train - INFO - Đã trích xuất 178 đặc trưng
+2025-04-26 09:40:36,911 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:40:36,911 - train - INFO - Tỷ lệ mất cân bằng 4.50 <= 10, không cần xử lý
+2025-04-26 09:40:36,913 - train - INFO - Tạo mô hình xgboost cho hachtoan_model
+2025-04-26 09:40:36,938 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:40:36,939 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:40:36,939 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:40:36,939 - train - INFO - Hoàn tất huấn luyện trong 0.04 giây
+2025-04-26 09:40:36,941 - train - INFO - Bắt đầu huấn luyện mô hình MaHangHoa cho khách hàng test_customer
+2025-04-26 09:40:36,942 - train - INFO - Lọc dữ liệu theo điều kiện: 24/80 dòng thỏa mãn
+2025-04-26 09:40:36,943 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:40:36,944 - train - INFO - Mã hóa nhãn MaHangHoa từ kiểu object
+2025-04-26 09:40:36,944 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:40:36,948 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:40:36,951 - train - INFO - Đã trích xuất 84 đặc trưng
+2025-04-26 09:40:36,951 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:40:36,952 - train - INFO - Tỷ lệ mất cân bằng 7.00 <= 10, không cần xử lý
+2025-04-26 09:40:36,952 - train - INFO - Tạo mô hình xgboost cho mahanghua_model
+2025-04-26 09:40:36,952 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:40:36,953 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:40:37,064 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:40:37,065 - train - INFO - Hoàn tất huấn luyện trong 0.12 giây
+2025-04-26 09:40:37,067 - train - INFO - Bắt đầu huấn luyện mô hình phát hiện outlier cho khách hàng test_customer
+2025-04-26 09:40:37,067 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:40:37,069 - train - INFO - Trích xuất đặc trưng cho phát hiện outlier...
+2025-04-26 09:40:37,075 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:40:37,079 - train - INFO - Đã trích xuất 178 đặc trưng
+2025-04-26 09:40:37,079 - train - INFO - Tạo mô hình phát hiện outlier isolation_forest
+2025-04-26 09:40:37,150 - train - INFO - Huấn luyện mô hình phát hiện outlier...
+2025-04-26 09:40:37,232 - train - INFO - Hoàn tất huấn luyện mô hình phát hiện outlier trong 0.17 giây
+2025-04-26 09:40:37,232 - train - INFO - Lưu các mô hình đã huấn luyện cho khách hàng test_customer
+2025-04-26 09:40:37,240 - train - INFO - Đã lưu mô hình HachToan: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_20250426_094036.joblib
+2025-04-26 09:40:37,259 - train - INFO - Đã lưu mô hình MaHangHoa: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_20250426_094036.joblib
+2025-04-26 09:40:37,291 - train - INFO - Đã lưu mô hình phát hiện outlier: D:\Python\AutoBKP_V2\volumes\models\test_customer\outlier\model_20250426_094036.joblib
+2025-04-26 09:40:37,292 - train - INFO - Đã lưu label encoders: D:\Python\AutoBKP_V2\volumes\models\test_customer\encoders\label_encoders_20250426_094036.joblib
+2025-04-26 09:40:37,299 - app.config.utils - INFO - Đã lưu metadata tại: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_20250426_094036.json
+2025-04-26 09:40:37,313 - train - INFO - Đã lưu metadata: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_20250426_094036.json
+2025-04-26 09:40:37,314 - train - INFO - Hoàn tất huấn luyện trong 0.42 giây
+2025-04-26 09:40:37,315 - test_autobkp - INFO - Đã huấn luyện mô hình thành công trong 0.42 giây
+2025-04-26 09:40:37,315 - test_autobkp - INFO - Mô hình HachToan: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_20250426_094036.joblib
+2025-04-26 09:40:37,315 - test_autobkp - INFO - Mô hình MaHangHoa: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_20250426_094036.joblib
+2025-04-26 09:40:37,315 - test_autobkp - INFO - Kiểm tra chức năng huấn luyện mô hình thành công
+2025-04-26 09:40:37,316 - test_autobkp - INFO - ✓ Kiểm tra chức năng huấn luyện thành công
+2025-04-26 09:40:37,316 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng dự đoán...
+2025-04-26 09:40:37,496 - predict - INFO - Đã tải mô hình HachToan từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_latest.joblib
+2025-04-26 09:40:37,526 - predict - INFO - Đã tải mô hình MaHangHoa từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_latest.joblib
+2025-04-26 09:40:37,555 - predict - INFO - Đã tải mô hình phát hiện outlier từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\outlier\model_latest.joblib
+2025-04-26 09:40:37,562 - predict - INFO - Đã tải label encoders từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\encoders\label_encoders_latest.joblib
+2025-04-26 09:40:37,574 - predict - INFO - Đã tải metadata từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_latest.json
+2025-04-26 09:40:37,580 - predict - ERROR - Lỗi khi dự đoán HachToan: Pipeline is not fitted yet.
+2025-04-26 09:40:37,580 - test_autobkp - ERROR - Lỗi khi kiểm tra chức năng dự đoán: Pipeline is not fitted yet.
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 54, in _raise_or_warn_if_not_fitted
+    yield
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 788, in predict
+    return self.steps[-1][1].predict(Xt, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 1718, in predict
+    class_probs = super().predict(
+                  ^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 1327, in predict
+    predts = self.get_booster().inplace_predict(
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 922, in get_booster
+    raise NotFittedError("need to call fit or load_model beforehand")
+sklearn.exceptions.NotFittedError: need to call fit or load_model beforehand
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\test_autobkp.py", line 463, in test_predict
+    single_result = predict_single_sample(self.customer_id, test_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 394, in predict_single_sample
+    return predictor.predict(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 269, in predict
+    hachtoan_pred = self.hachtoan_model.predict(df)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 782, in predict
+    with _raise_or_warn_if_not_fitted(self):
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 56, in _raise_or_warn_if_not_fitted
+    raise NotFittedError("Pipeline is not fitted yet.") from exc
+sklearn.exceptions.NotFittedError: Pipeline is not fitted yet.
+2025-04-26 09:40:37,600 - test_autobkp - ERROR - ✗ Kiểm tra chức năng dự đoán thất bại
+2025-04-26 09:40:37,600 - test_autobkp - INFO - === KẾT THÚC CÁC BÀI KIỂM TRA ===
+2025-04-26 09:40:37,600 - test_autobkp - INFO - Tổng kết: 5/6 bài kiểm tra thành công
+2025-04-26 09:50:53,951 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-26 09:50:55,039 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-26 09:50:55,040 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos
+2025-04-26 09:50:55,040 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-26 09:50:55,040 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-26 09:50:55,040 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-26 09:50:55,040 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-26 09:50:55,041 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-26 09:50:55,041 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-26 09:50:55,041 - test_autobkp - INFO - Bắt đầu tạo 100 dòng dữ liệu mẫu...
+2025-04-26 09:50:55,044 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_sample_data.csv
+2025-04-26 09:50:55,044 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-26 09:50:55,044 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-26 09:50:55,044 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_sample_data.csv
+2025-04-26 09:50:55,077 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-26 09:50:55,080 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-26 09:50:55,080 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-26 09:50:55,080 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-26 09:50:55,081 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\validate_result.json
+2025-04-26 09:50:55,081 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-26 09:50:55,081 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-26 09:50:55,083 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-26 09:50:55,083 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-26 09:50:55,084 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_sample_data.csv
+2025-04-26 09:50:55,085 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-26 09:50:55,085 - preprocess - INFO - Đã đọc 100 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_sample_data.csv
+2025-04-26 09:50:55,085 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-26 09:50:55,087 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-26 09:50:55,088 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-26 09:50:55,088 - preprocess - INFO - Số lượng lớp: 15
+2025-04-26 09:50:55,089 - preprocess - INFO - Tỷ lệ mất cân bằng: 2.50
+2025-04-26 09:50:55,089 - preprocess - INFO - Lớp hiếm nhất có 4 mẫu (4.00%)
+2025-04-26 09:50:55,089 - preprocess - INFO - Lớp phổ biến nhất có 10 mẫu (10.00%)
+2025-04-26 09:50:55,090 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-26 09:50:55,090 - preprocess - INFO - Số lượng lớp: 9
+2025-04-26 09:50:55,091 - preprocess - INFO - Tỷ lệ mất cân bằng: 3.00
+2025-04-26 09:50:55,091 - preprocess - INFO - Lớp hiếm nhất có 2 mẫu (5.41%)
+2025-04-26 09:50:55,091 - preprocess - INFO - Lớp phổ biến nhất có 6 mẫu (16.22%)
+2025-04-26 09:50:55,091 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-26 09:50:55,092 - preprocess - INFO - Tập huấn luyện: 80 mẫu
+2025-04-26 09:50:55,092 - preprocess - INFO - Tập kiểm tra: 20 mẫu
+2025-04-26 09:50:55,099 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_train_20250426_095055.csv
+2025-04-26 09:50:55,099 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_test_20250426_095055.csv
+2025-04-26 09:50:55,100 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_metadata_20250426_095055.json
+2025-04-26 09:50:55,100 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_metadata_20250426_095055.json
+2025-04-26 09:50:55,100 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-26 09:50:55,100 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_train_20250426_095055.csv
+2025-04-26 09:50:55,101 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_test_20250426_095055.csv
+2025-04-26 09:50:55,148 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 80
+2025-04-26 09:50:55,148 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 20
+2025-04-26 09:50:55,148 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-26 09:50:55,148 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-26 09:50:55,149 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-26 09:50:55,149 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-26 09:50:55,150 - train - INFO - Đã đọc 80 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_train_20250426_095055.csv
+2025-04-26 09:50:55,152 - train - INFO - Đã đọc 20 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_6us9ywos\test_customer_test_20250426_095055.csv
+2025-04-26 09:50:55,153 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-26 09:50:55,153 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:50:55,154 - train - INFO - Tạo feature extractor...
+2025-04-26 09:50:55,155 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-26 09:50:55,155 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:50:55,160 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:50:55,163 - train - INFO - Đã trích xuất 184 đặc trưng
+2025-04-26 09:50:55,163 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:50:55,164 - train - INFO - Tỷ lệ mất cân bằng 4.50 <= 10, không cần xử lý
+2025-04-26 09:50:55,164 - train - INFO - Tạo mô hình xgboost cho hachtoan_model
+2025-04-26 09:50:55,189 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:50:55,190 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:50:55,190 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:50:55,190 - train - INFO - Hoàn tất huấn luyện trong 0.04 giây
+2025-04-26 09:50:55,191 - train - INFO - Bắt đầu huấn luyện mô hình MaHangHoa cho khách hàng test_customer
+2025-04-26 09:50:55,192 - train - INFO - Lọc dữ liệu theo điều kiện: 28/80 dòng thỏa mãn
+2025-04-26 09:50:55,192 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:50:55,193 - train - INFO - Mã hóa nhãn MaHangHoa từ kiểu object
+2025-04-26 09:50:55,194 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:50:55,197 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:50:55,199 - train - INFO - Đã trích xuất 82 đặc trưng
+2025-04-26 09:50:55,200 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:50:55,200 - train - INFO - Tỷ lệ mất cân bằng 2.50 <= 10, không cần xử lý
+2025-04-26 09:50:55,201 - train - INFO - Tạo mô hình xgboost cho mahanghua_model
+2025-04-26 09:50:55,201 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:50:55,201 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:50:55,313 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:50:55,313 - train - INFO - Hoàn tất huấn luyện trong 0.12 giây
+2025-04-26 09:50:55,315 - train - INFO - Bắt đầu huấn luyện mô hình phát hiện outlier cho khách hàng test_customer
+2025-04-26 09:50:55,315 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:50:55,317 - train - INFO - Trích xuất đặc trưng cho phát hiện outlier...
+2025-04-26 09:50:55,323 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:50:55,327 - train - INFO - Đã trích xuất 184 đặc trưng
+2025-04-26 09:50:55,327 - train - INFO - Tạo mô hình phát hiện outlier isolation_forest
+2025-04-26 09:50:55,394 - train - INFO - Huấn luyện mô hình phát hiện outlier...
+2025-04-26 09:50:55,483 - train - INFO - Hoàn tất huấn luyện mô hình phát hiện outlier trong 0.17 giây
+2025-04-26 09:50:55,483 - train - INFO - Lưu các mô hình đã huấn luyện cho khách hàng test_customer
+2025-04-26 09:50:55,486 - train - INFO - Đã lưu mô hình HachToan: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_20250426_095055.joblib
+2025-04-26 09:50:55,507 - train - INFO - Đã lưu mô hình MaHangHoa: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_20250426_095055.joblib
+2025-04-26 09:50:55,536 - train - INFO - Đã lưu mô hình phát hiện outlier: D:\Python\AutoBKP_V2\volumes\models\test_customer\outlier\model_20250426_095055.joblib
+2025-04-26 09:50:55,539 - train - INFO - Đã lưu label encoders: D:\Python\AutoBKP_V2\volumes\models\test_customer\encoders\label_encoders_20250426_095055.joblib
+2025-04-26 09:50:55,543 - app.config.utils - INFO - Đã lưu metadata tại: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_20250426_095055.json
+2025-04-26 09:50:55,557 - train - INFO - Đã lưu metadata: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_20250426_095055.json
+2025-04-26 09:50:55,558 - train - INFO - Hoàn tất huấn luyện trong 0.41 giây
+2025-04-26 09:50:55,560 - test_autobkp - INFO - Đã huấn luyện mô hình thành công trong 0.41 giây
+2025-04-26 09:50:55,560 - test_autobkp - INFO - Mô hình HachToan: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_20250426_095055.joblib
+2025-04-26 09:50:55,560 - test_autobkp - INFO - Mô hình MaHangHoa: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_20250426_095055.joblib
+2025-04-26 09:50:55,560 - test_autobkp - INFO - Kiểm tra chức năng huấn luyện mô hình thành công
+2025-04-26 09:50:55,561 - test_autobkp - INFO - ✓ Kiểm tra chức năng huấn luyện thành công
+2025-04-26 09:50:55,561 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng dự đoán...
+2025-04-26 09:50:55,722 - predict - INFO - Đã tải mô hình HachToan từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_latest.joblib
+2025-04-26 09:50:55,722 - predict - WARNING - Không thể kiểm tra trạng thái fit của mô hình: 'XGBClassifier' object has no attribute '_Booster'
+2025-04-26 09:50:55,752 - predict - INFO - Đã tải mô hình MaHangHoa từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_latest.joblib
+2025-04-26 09:50:55,789 - predict - INFO - Đã tải mô hình phát hiện outlier từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\outlier\model_latest.joblib
+2025-04-26 09:50:55,799 - predict - INFO - Đã tải label encoders từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\encoders\label_encoders_latest.joblib
+2025-04-26 09:50:55,813 - predict - INFO - Đã tải metadata từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_latest.json
+2025-04-26 09:50:55,817 - predict - WARNING - Lỗi khi sử dụng predict trực tiếp: Pipeline is not fitted yet.. Thử phương pháp thay thế.
+2025-04-26 09:50:55,817 - predict - ERROR - Lỗi khi dự đoán HachToan: This 'Pipeline' has no attribute 'transform'
+2025-04-26 09:50:55,818 - test_autobkp - ERROR - Lỗi khi kiểm tra chức năng dự đoán: This 'Pipeline' has no attribute 'transform'
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 54, in _raise_or_warn_if_not_fitted
+    yield
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 788, in predict
+    return self.steps[-1][1].predict(Xt, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 1718, in predict
+    class_probs = super().predict(
+                  ^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 1327, in predict
+    predts = self.get_booster().inplace_predict(
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 922, in get_booster
+    raise NotFittedError("need to call fit or load_model beforehand")
+sklearn.exceptions.NotFittedError: need to call fit or load_model beforehand
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 317, in predict
+    hachtoan_pred = self.hachtoan_model.predict(df)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 782, in predict
+    with _raise_or_warn_if_not_fitted(self):
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 56, in _raise_or_warn_if_not_fitted
+    raise NotFittedError("Pipeline is not fitted yet.") from exc
+sklearn.exceptions.NotFittedError: Pipeline is not fitted yet.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\test_autobkp.py", line 463, in test_predict
+    single_result = predict_single_sample(self.customer_id, test_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 492, in predict_single_sample
+    return predictor.predict(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 324, in predict
+    X_transformed = self.hachtoan_model.transform_df(df)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 141, in transform_df
+    return pipeline.transform(X)
+           ^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\utils\_available_if.py", line 43, in __get__
+    self._check(obj, owner=owner)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\utils\_available_if.py", line 37, in _check
+    raise AttributeError(attr_err_msg)
+AttributeError: This 'Pipeline' has no attribute 'transform'
+2025-04-26 09:50:55,835 - test_autobkp - ERROR - ✗ Kiểm tra chức năng dự đoán thất bại
+2025-04-26 09:50:55,835 - test_autobkp - INFO - === KẾT THÚC CÁC BÀI KIỂM TRA ===
+2025-04-26 09:50:55,836 - test_autobkp - INFO - Tổng kết: 5/6 bài kiểm tra thành công
+2025-04-26 09:53:31,613 - config_manager - INFO - Đã tải cấu hình mặc định
+2025-04-26 09:53:32,691 - test_autobkp - INFO - Đã khởi tạo AutoBKPTester với customer_id: test_customer
+2025-04-26 09:53:32,692 - test_autobkp - INFO - Thư mục tạm: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj
+2025-04-26 09:53:32,692 - test_autobkp - INFO - === BẮT ĐẦU CHẠY TẤT CẢ CÁC BÀI KIỂM TRA ===
+2025-04-26 09:53:32,692 - test_autobkp - INFO - Bắt đầu kiểm tra cấu hình...
+2025-04-26 09:53:32,692 - test_autobkp - INFO - Đã tải cấu hình mặc định thành công
+2025-04-26 09:53:32,692 - test_autobkp - INFO - Đã tải cấu hình khách hàng test_customer thành công
+2025-04-26 09:53:32,693 - test_autobkp - INFO - Kiểm tra cấu hình thành công
+2025-04-26 09:53:32,693 - test_autobkp - INFO - ✓ Kiểm tra cấu hình thành công
+2025-04-26 09:53:32,693 - test_autobkp - INFO - Bắt đầu tạo 1000 dòng dữ liệu mẫu...
+2025-04-26 09:53:32,700 - test_autobkp - INFO - Đã tạo dữ liệu mẫu và lưu vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_sample_data.csv
+2025-04-26 09:53:32,701 - test_autobkp - INFO - ✓ Tạo dữ liệu mẫu thành công
+2025-04-26 09:53:32,701 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng validate_data...
+2025-04-26 09:53:32,701 - validate_data - INFO - Bắt đầu kiểm tra tính hợp lệ của dữ liệu từ file C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_sample_data.csv
+2025-04-26 09:53:32,748 - validate_data - INFO - Đã đọc file CSV với encoding utf-8
+2025-04-26 09:53:32,754 - validate_data - INFO - Hoàn tất kiểm tra. Trạng thái: valid
+2025-04-26 09:53:32,754 - validate_data - INFO - Tổng số cảnh báo: 0
+2025-04-26 09:53:32,754 - test_autobkp - INFO - Kết quả validate: valid
+2025-04-26 09:53:32,755 - test_autobkp - INFO - Đã lưu kết quả validate vào: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\validate_result.json
+2025-04-26 09:53:32,755 - test_autobkp - INFO - Kiểm tra chức năng validate_data thành công
+2025-04-26 09:53:32,755 - test_autobkp - INFO - ✓ Kiểm tra chức năng validate_data thành công
+2025-04-26 09:53:32,755 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng tiền xử lý dữ liệu...
+2025-04-26 09:53:32,755 - preprocess - INFO - Bắt đầu tiền xử lý dữ liệu cho khách hàng test_customer
+2025-04-26 09:53:32,756 - preprocess - INFO - Đọc dữ liệu từ: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_sample_data.csv
+2025-04-26 09:53:32,759 - preprocess - INFO - Đọc thành công với encoding: utf-8
+2025-04-26 09:53:32,759 - preprocess - INFO - Đã đọc 1000 dòng dữ liệu từ C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_sample_data.csv
+2025-04-26 09:53:32,760 - preprocess - INFO - Tiền xử lý cột văn bản tiếng Việt: TenHangHoaDichVu
+2025-04-26 09:53:32,767 - preprocess - INFO - Tiền xử lý cột ID: MSTNguoiBan
+2025-04-26 09:53:32,768 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: HachToan
+2025-04-26 09:53:32,769 - preprocess - INFO - Số lượng lớp: 15
+2025-04-26 09:53:32,769 - preprocess - INFO - Tỷ lệ mất cân bằng: 1.26
+2025-04-26 09:53:32,769 - preprocess - INFO - Lớp hiếm nhất có 61 mẫu (6.10%)
+2025-04-26 09:53:32,769 - preprocess - INFO - Lớp phổ biến nhất có 77 mẫu (7.70%)
+2025-04-26 09:53:32,770 - preprocess - INFO - Phân tích phân phối của biến mục tiêu: MaHangHoa
+2025-04-26 09:53:32,770 - preprocess - INFO - Số lượng lớp: 10
+2025-04-26 09:53:32,770 - preprocess - INFO - Tỷ lệ mất cân bằng: 1.77
+2025-04-26 09:53:32,770 - preprocess - INFO - Lớp hiếm nhất có 26 mẫu (7.62%)
+2025-04-26 09:53:32,771 - preprocess - INFO - Lớp phổ biến nhất có 46 mẫu (13.49%)
+2025-04-26 09:53:32,771 - preprocess - INFO - Phân chia dữ liệu với test_size=0.2
+2025-04-26 09:53:32,771 - preprocess - INFO - Tập huấn luyện: 800 mẫu
+2025-04-26 09:53:32,771 - preprocess - INFO - Tập kiểm tra: 200 mẫu
+2025-04-26 09:53:32,784 - preprocess - INFO - Đã lưu tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_train_20250426_095332.csv
+2025-04-26 09:53:32,784 - preprocess - INFO - Đã lưu tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_test_20250426_095332.csv
+2025-04-26 09:53:32,785 - app.config.utils - INFO - Đã lưu metadata tại: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_metadata_20250426_095332.json
+2025-04-26 09:53:32,785 - preprocess - INFO - Đã lưu metadata: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_metadata_20250426_095332.json
+2025-04-26 09:53:32,785 - test_autobkp - INFO - Đã tiền xử lý dữ liệu thành công
+2025-04-26 09:53:32,786 - test_autobkp - INFO - - Tập huấn luyện: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_train_20250426_095332.csv
+2025-04-26 09:53:32,786 - test_autobkp - INFO - - Tập kiểm tra: C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_test_20250426_095332.csv
+2025-04-26 09:53:32,841 - test_autobkp - INFO - Số lượng mẫu trong tập huấn luyện: 800
+2025-04-26 09:53:32,841 - test_autobkp - INFO - Số lượng mẫu trong tập kiểm tra: 200
+2025-04-26 09:53:32,841 - test_autobkp - INFO - Kiểm tra chức năng tiền xử lý dữ liệu thành công
+2025-04-26 09:53:32,843 - test_autobkp - INFO - ✓ Kiểm tra chức năng tiền xử lý thành công
+2025-04-26 09:53:32,843 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng huấn luyện mô hình...
+2025-04-26 09:53:32,843 - train - INFO - Bắt đầu huấn luyện mô hình cho khách hàng test_customer
+2025-04-26 09:53:32,846 - train - INFO - Đã đọc 800 dòng dữ liệu huấn luyện từ C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_train_20250426_095332.csv
+2025-04-26 09:53:32,847 - train - INFO - Đã đọc 200 dòng dữ liệu kiểm tra từ C:\Users\trant\AppData\Local\Temp\autobkp_test_efry0snj\test_customer_test_20250426_095332.csv
+2025-04-26 09:53:32,847 - train - INFO - Bắt đầu huấn luyện mô hình HachToan cho khách hàng test_customer
+2025-04-26 09:53:32,847 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:53:32,854 - train - INFO - Tạo feature extractor...
+2025-04-26 09:53:32,854 - app.utils.feature_extraction - WARNING - Không tìm thấy thư viện xử lý tiếng Việt (underthesea, pyvi). Chức năng xử lý tiếng Việt sẽ bị hạn chế.
+2025-04-26 09:53:32,855 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:53:32,878 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:53:32,897 - train - INFO - Đã trích xuất 950 đặc trưng
+2025-04-26 09:53:32,898 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:53:32,898 - train - INFO - Tỷ lệ mất cân bằng 1.49 <= 10, không cần xử lý
+2025-04-26 09:53:32,899 - train - INFO - Tạo mô hình xgboost cho hachtoan_model
+2025-04-26 09:53:32,921 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:53:32,923 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:53:32,923 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:53:32,924 - train - INFO - Hoàn tất huấn luyện trong 0.08 giây
+2025-04-26 09:53:32,925 - train - INFO - Bắt đầu huấn luyện mô hình MaHangHoa cho khách hàng test_customer
+2025-04-26 09:53:32,925 - train - INFO - Lọc dữ liệu theo điều kiện: 269/800 dòng thỏa mãn
+2025-04-26 09:53:32,926 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:53:32,929 - train - INFO - Mã hóa nhãn MaHangHoa từ kiểu object
+2025-04-26 09:53:32,929 - train - INFO - Trích xuất đặc trưng...
+2025-04-26 09:53:32,938 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:53:32,944 - train - INFO - Đã trích xuất 412 đặc trưng
+2025-04-26 09:53:32,945 - train - INFO - Xử lý mất cân bằng dữ liệu với chiến lược: auto
+2025-04-26 09:53:32,945 - train - INFO - Tỷ lệ mất cân bằng 1.76 <= 10, không cần xử lý
+2025-04-26 09:53:32,945 - train - INFO - Tạo mô hình xgboost cho mahanghua_model
+2025-04-26 09:53:32,945 - train - INFO - Đã tạo mô hình XGBoost với tham số: {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.1, 'objective': 'multi:softprob', 'n_jobs': -1, 'random_state': 42}
+2025-04-26 09:53:32,945 - train - INFO - Huấn luyện mô hình...
+2025-04-26 09:53:33,474 - train - INFO - Tạo pipeline kết hợp feature extractor và classifier
+2025-04-26 09:53:33,475 - train - INFO - Hoàn tất huấn luyện trong 0.55 giây
+2025-04-26 09:53:33,479 - train - INFO - Bắt đầu huấn luyện mô hình phát hiện outlier cho khách hàng test_customer
+2025-04-26 09:53:33,479 - train - INFO - Tiền xử lý dữ liệu...
+2025-04-26 09:53:33,487 - train - INFO - Trích xuất đặc trưng cho phát hiện outlier...
+2025-04-26 09:53:33,519 - app.utils.feature_extraction - WARNING - Lỗi khi lấy tên đặc trưng từ transformer text_TenHangHoaDichVu: Estimator preprocess does not provide get_feature_names_out. Did you mean to call pipeline[:-1].get_feature_names_out()?
+2025-04-26 09:53:33,547 - train - INFO - Đã trích xuất 950 đặc trưng
+2025-04-26 09:53:33,547 - train - INFO - Tạo mô hình phát hiện outlier isolation_forest
+2025-04-26 09:53:33,606 - train - INFO - Huấn luyện mô hình phát hiện outlier...
+2025-04-26 09:53:33,701 - train - INFO - Hoàn tất huấn luyện mô hình phát hiện outlier trong 0.22 giây
+2025-04-26 09:53:33,701 - train - INFO - Lưu các mô hình đã huấn luyện cho khách hàng test_customer
+2025-04-26 09:53:33,707 - train - INFO - Đã lưu mô hình HachToan: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_20250426_095332.joblib
+2025-04-26 09:53:33,732 - train - INFO - Đã lưu mô hình MaHangHoa: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_20250426_095332.joblib
+2025-04-26 09:53:33,764 - train - INFO - Đã lưu mô hình phát hiện outlier: D:\Python\AutoBKP_V2\volumes\models\test_customer\outlier\model_20250426_095332.joblib
+2025-04-26 09:53:33,765 - train - INFO - Đã lưu label encoders: D:\Python\AutoBKP_V2\volumes\models\test_customer\encoders\label_encoders_20250426_095332.joblib
+2025-04-26 09:53:33,770 - app.config.utils - INFO - Đã lưu metadata tại: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_20250426_095332.json
+2025-04-26 09:53:33,783 - train - INFO - Đã lưu metadata: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_20250426_095332.json
+2025-04-26 09:53:33,784 - train - INFO - Hoàn tất huấn luyện trong 0.94 giây
+2025-04-26 09:53:33,785 - test_autobkp - INFO - Đã huấn luyện mô hình thành công trong 0.94 giây
+2025-04-26 09:53:33,786 - test_autobkp - INFO - Mô hình HachToan: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_20250426_095332.joblib
+2025-04-26 09:53:33,786 - test_autobkp - INFO - Mô hình MaHangHoa: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_20250426_095332.joblib
+2025-04-26 09:53:33,786 - test_autobkp - INFO - Kiểm tra chức năng huấn luyện mô hình thành công
+2025-04-26 09:53:33,786 - test_autobkp - INFO - ✓ Kiểm tra chức năng huấn luyện thành công
+2025-04-26 09:53:33,786 - test_autobkp - INFO - Bắt đầu kiểm tra chức năng dự đoán...
+2025-04-26 09:53:33,882 - predict - INFO - Đã tải mô hình HachToan từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\hachtoan\model_latest.joblib
+2025-04-26 09:53:33,882 - predict - WARNING - Không thể kiểm tra trạng thái fit của mô hình: 'XGBClassifier' object has no attribute '_Booster'
+2025-04-26 09:53:33,917 - predict - INFO - Đã tải mô hình MaHangHoa từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\mahanghua\model_latest.joblib
+2025-04-26 09:53:33,984 - predict - INFO - Đã tải mô hình phát hiện outlier từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\outlier\model_latest.joblib
+2025-04-26 09:53:33,993 - predict - INFO - Đã tải label encoders từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\encoders\label_encoders_latest.joblib
+2025-04-26 09:53:34,003 - predict - INFO - Đã tải metadata từ: D:\Python\AutoBKP_V2\volumes\models\test_customer\metadata\model_metadata_latest.json
+2025-04-26 09:53:34,010 - predict - WARNING - Lỗi khi sử dụng predict trực tiếp: Pipeline is not fitted yet.. Thử phương pháp thay thế.
+2025-04-26 09:53:34,010 - predict - ERROR - Lỗi khi dự đoán HachToan: This 'Pipeline' has no attribute 'transform'
+2025-04-26 09:53:34,010 - test_autobkp - ERROR - Lỗi khi kiểm tra chức năng dự đoán: This 'Pipeline' has no attribute 'transform'
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 54, in _raise_or_warn_if_not_fitted
+    yield
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 788, in predict
+    return self.steps[-1][1].predict(Xt, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 1718, in predict
+    class_probs = super().predict(
+                  ^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 1327, in predict
+    predts = self.get_booster().inplace_predict(
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\xgboost\sklearn.py", line 922, in get_booster
+    raise NotFittedError("need to call fit or load_model beforehand")
+sklearn.exceptions.NotFittedError: need to call fit or load_model beforehand
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 317, in predict
+    hachtoan_pred = self.hachtoan_model.predict(df)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 782, in predict
+    with _raise_or_warn_if_not_fitted(self):
+  File "C:\Users\trant\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\pipeline.py", line 56, in _raise_or_warn_if_not_fitted
+    raise NotFittedError("Pipeline is not fitted yet.") from exc
+sklearn.exceptions.NotFittedError: Pipeline is not fitted yet.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\AutoBKP_V2\test_autobkp.py", line 463, in test_predict
+    single_result = predict_single_sample(self.customer_id, test_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 492, in predict_single_sample
+    return predictor.predict(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 324, in predict
+    X_transformed = self.hachtoan_model.transform_df(df)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\app\scripts\predict.py", line 141, in transform_df
+    return pipeline.transform(X)
+           ^^^^^^^^^^^^^^^^^^
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\utils\_available_if.py", line 43, in __get__
+    self._check(obj, owner=owner)
+  File "D:\Python\AutoBKP_V2\.venv\Lib\site-packages\sklearn\utils\_available_if.py", line 37, in _check
+    raise AttributeError(attr_err_msg)
+AttributeError: This 'Pipeline' has no attribute 'transform'
+2025-04-26 09:53:34,014 - test_autobkp - ERROR - ✗ Kiểm tra chức năng dự đoán thất bại
+2025-04-26 09:53:34,014 - test_autobkp - INFO - === KẾT THÚC CÁC BÀI KIỂM TRA ===
+2025-04-26 09:53:34,014 - test_autobkp - INFO - Tổng kết: 5/6 bài kiểm tra thành công

@@ -177,7 +177,7 @@ class AutoBKPTester:
             logger.exception(f"Lỗi khi kiểm tra cấu hình: {str(e)}")
             return False
 
-    def generate_sample_data(self, num_rows: int = 100) -> bool:
+    def generate_sample_data(self, num_rows: int = 1000) -> bool:
         """
         Tạo dữ liệu mẫu để test
 

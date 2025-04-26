@@ -11,13 +11,12 @@ from typing import List, Dict, Any, Union, Optional, Tuple
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder, FunctionTransformer
 import logging
 
 # Thử import các thư viện xử lý tiếng Việt
 try:
     import underthesea
-
     UNDERTHESEA_AVAILABLE = True
 except ImportError:
     UNDERTHESEA_AVAILABLE = False
@@ -25,12 +24,90 @@ except ImportError:
 try:
     import pyvi
     from pyvi import ViTokenizer
-
     PYVI_AVAILABLE = True
 except ImportError:
     PYVI_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
+
+# Định nghĩa hàm global để có thể pickle
+def preprocess_vietnamese_text_global(text):
+    """
+    Hàm tiền xử lý văn bản tiếng Việt ở mức global
+    """
+    # Xử lý giá trị đơn
+    if not isinstance(text, str):
+        return "" if pd.isna(text) else str(text)
+
+    # Chuyển về chữ thường
+    text = text.lower()
+
+    # Loại bỏ dấu câu và ký tự đặc biệt
+    text = re.sub(r'[^\w\s]', ' ', text)
+
+    # Loại bỏ số
+    text = re.sub(r'\d+', ' ', text)
+
+    # Loại bỏ khoảng trắng thừa
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    # Tách từ tiếng Việt nếu có thư viện hỗ trợ
+    if UNDERTHESEA_AVAILABLE:
+        try:
+            # Sử dụng underthesea để tách từ
+            tokens = underthesea.word_tokenize(text)
+            text = ' '.join(tokens)
+        except Exception as e:
+            logger.warning(f"Lỗi khi tách từ với underthesea: {str(e)}")
+    elif PYVI_AVAILABLE:
+        try:
+            # Sử dụng pyvi để tách từ
+            text = ViTokenizer.tokenize(text)
+        except Exception as e:
+            logger.warning(f"Lỗi khi tách từ với pyvi: {str(e)}")
+
+    return text
+
+# Định nghĩa các hàm xử lý series/dataframe ở mức global
+def preprocess_text_series_global(series):
+    """
+    Xử lý một pandas Series với văn bản tiếng Việt
+    """
+    return series.apply(preprocess_vietnamese_text_global)
+
+def preprocess_text_array_global(array):
+    """
+    Xử lý một numpy array với văn bản tiếng Việt
+    """
+    return np.array([preprocess_vietnamese_text_global(text) for text in array])
+
+
+class PicklableColumnPreprocessor:
+    """
+    Lớp preprocessor cho cột có thể pickle
+    """
+    def __init__(self, column):
+        self.column = column
+
+    def __call__(self, X):
+        if isinstance(X, pd.DataFrame):
+            return preprocess_text_series_global(X[self.column])
+        elif isinstance(X, pd.Series):
+            return preprocess_text_series_global(X)
+        elif isinstance(X, np.ndarray):
+            if X.ndim > 1:
+                # Nếu là ma trận 2D, giả sử cột đầu tiên chứa văn bản
+                return preprocess_text_array_global(X[:, 0])
+            else:
+                return preprocess_text_array_global(X)
+        else:
+            return preprocess_vietnamese_text_global(X)
+
+    def __reduce__(self):
+        """
+        Hỗ trợ pickling bằng cách xác định cách khôi phục đối tượng
+        """
+        return (self.__class__, (self.column,))
 
 
 class FeatureExtractor:
@@ -72,75 +149,6 @@ class FeatureExtractor:
                 "Chức năng xử lý tiếng Việt sẽ bị hạn chế."
             )
 
-    def _preprocess_vietnamese_text(self, text: Union[str, pd.Series]) -> Union[str, pd.Series]:
-        """
-        Tiền xử lý văn bản tiếng Việt
-
-        Args:
-            text: Chuỗi văn bản hoặc Series cần xử lý
-
-        Returns:
-            Chuỗi văn bản hoặc Series đã xử lý
-        """
-        # Kiểm tra và xử lý nếu đầu vào là Series
-        if isinstance(text, pd.Series):
-            return text.apply(self._preprocess_vietnamese_text)
-
-        # Xử lý giá trị đơn
-        if not isinstance(text, str):
-            return "" if pd.isna(text) else str(text)
-
-        # Chuyển về chữ thường
-        text = text.lower()
-
-        # Loại bỏ dấu câu và ký tự đặc biệt
-        text = re.sub(r'[^\w\s]', ' ', text)
-
-        # Loại bỏ số
-        text = re.sub(r'\d+', ' ', text)
-
-        # Loại bỏ khoảng trắng thừa
-        text = re.sub(r'\s+', ' ', text).strip()
-
-        # Tách từ tiếng Việt nếu có thư viện hỗ trợ
-        if UNDERTHESEA_AVAILABLE:
-            try:
-                # Sử dụng underthesea để tách từ
-                tokens = underthesea.word_tokenize(text)
-                text = ' '.join(tokens)
-            except Exception as e:
-                logger.warning(f"Lỗi khi tách từ với underthesea: {str(e)}")
-        elif PYVI_AVAILABLE:
-            try:
-                # Sử dụng pyvi để tách từ
-                text = ViTokenizer.tokenize(text)
-            except Exception as e:
-                logger.warning(f"Lỗi khi tách từ với pyvi: {str(e)}")
-
-        return text
-
-    # Hàm trình bao preprocess_texts để có thể pickle
-    def _preprocess_texts(self, texts):
-        """
-        Xử lý tập hợp văn bản (hỗ trợ nhiều định dạng đầu vào)
-
-        Args:
-            texts: Có thể là DataFrame, Series, mảng numpy, hoặc văn bản đơn lẻ
-
-        Returns:
-            Văn bản đã được xử lý
-        """
-        if isinstance(texts, pd.DataFrame):
-            # Nếu là DataFrame, mặc định lấy column đầu tiên từ text_columns
-            col = self.text_columns[0] if self.text_columns else texts.columns[0]
-            return texts[col].apply(self._preprocess_vietnamese_text)
-        elif isinstance(texts, pd.Series):
-            return texts.apply(self._preprocess_vietnamese_text)
-        elif isinstance(texts, np.ndarray):
-            return np.array([self._preprocess_vietnamese_text(text) for text in texts])
-        else:
-            return self._preprocess_vietnamese_text(texts)
-
     def _create_text_transformer(self, column: str) -> Pipeline:
         """
         Tạo transformer cho cột văn bản
@@ -169,17 +177,12 @@ class FeatureExtractor:
         # Lưu vectorizer
         self.text_transformers[column] = vectorizer
 
-        # Sử dụng FunctionTransformer từ scikit-learn với phương thức class
-        from sklearn.preprocessing import FunctionTransformer
+        # Tạo một đối tượng có thể pickle cho tiền xử lý
+        preprocessor = PicklableColumnPreprocessor(column)
 
-        # Tạo closure để truyền column vào preprocess_texts
-        def column_preprocessor(X):
-            if isinstance(X, pd.DataFrame):
-                return self._preprocess_texts(X[column])
-            return self._preprocess_texts(X)
-
+        # Sử dụng FunctionTransformer từ scikit-learn
         preprocess_transformer = FunctionTransformer(
-            column_preprocessor,
+            preprocessor,
             validate=False
         )
 

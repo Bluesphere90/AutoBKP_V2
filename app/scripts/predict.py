@@ -96,19 +96,64 @@ class ModelPredictor:
     def _load_models(self):
         """Tải các mô hình từ đĩa"""
         try:
+            # Xác định đường dẫn mô hình
+            if self.models_dir is None:
+                self.models_dir = path_manager.get_customer_model_path(self.customer_id)
+
             # Tải mô hình HachToan
             hachtoan_path = self._get_model_path('hachtoan')
             if os.path.exists(hachtoan_path):
                 self.hachtoan_model = joblib.load(hachtoan_path)
                 logger.info(f"Đã tải mô hình HachToan từ: {hachtoan_path}")
+
+                # Kiểm tra mô hình đã được fit chưa
+                try:
+                    # Thử gọi phương thức _check_is_fitted nếu có
+                    if hasattr(self.hachtoan_model, '_check_is_fitted'):
+                        self.hachtoan_model._check_is_fitted()
+                    # Nếu không, thử kiểm tra bằng cách khác: kiểm tra các thuộc tính thường có sau khi fit
+                    elif not hasattr(self.hachtoan_model, 'steps') or not self.hachtoan_model.steps[-1][1]._Booster:
+                        logger.warning("Mô hình HachToan có thể chưa được fit đúng cách")
+                except Exception as e:
+                    logger.warning(f"Không thể kiểm tra trạng thái fit của mô hình: {str(e)}")
             else:
                 logger.warning(f"Không tìm thấy mô hình HachToan tại: {hachtoan_path}")
+
+            # Bổ sung phương thức transform_df vào Pipeline nếu chưa có
+            if self.hachtoan_model and not hasattr(self.hachtoan_model, 'transform_df'):
+                # Thêm phương thức biến đổi DataFrame nếu chưa có
+                def transform_df(pipeline, X):
+                    if isinstance(X, pd.DataFrame):
+                        # Đảm bảo tất cả các cột văn bản cần thiết đều tồn tại
+                        # Sử dụng một giá trị mặc định cho bất kỳ cột nào bị thiếu
+                        needed_columns = []
+                        for step_name, transformer in pipeline.steps:
+                            if hasattr(transformer, 'feature_names_in_'):
+                                needed_columns.extend(transformer.feature_names_in_)
+                            elif step_name.startswith('text_') and step_name[5:] not in X.columns:
+                                needed_columns.append(step_name[5:])
+
+                        for col in needed_columns:
+                            if col not in X.columns:
+                                X[col] = ""
+
+                    # Trả về ma trận đặc trưng đã biến đổi
+                    return pipeline.transform(X)
+
+                # Thêm phương thức như một thuộc tính bound method
+                import types
+                self.hachtoan_model.transform_df = types.MethodType(transform_df, self.hachtoan_model)
 
             # Tải mô hình MaHangHoa
             mahanghua_path = self._get_model_path('mahanghua')
             if os.path.exists(mahanghua_path):
                 self.mahanghua_model = joblib.load(mahanghua_path)
                 logger.info(f"Đã tải mô hình MaHangHoa từ: {mahanghua_path}")
+
+                # Bổ sung phương thức transform_df cho mô hình MaHangHoa
+                if not hasattr(self.mahanghua_model, 'transform_df'):
+                    transform_df_method = types.MethodType(transform_df, self.mahanghua_model)
+                    self.mahanghua_model.transform_df = transform_df_method
             else:
                 logger.info(f"Không tìm thấy mô hình MaHangHoa tại: {mahanghua_path}")
 
@@ -140,6 +185,7 @@ class ModelPredictor:
         except Exception as e:
             logger.error(f"Lỗi khi tải mô hình: {str(e)}")
             raise ValueError(f"Không thể tải mô hình cho khách hàng {self.customer_id}: {str(e)}")
+
 
     def _get_model_path(self, model_type: str) -> str:
         """
@@ -266,8 +312,26 @@ class ModelPredictor:
 
         # Dự đoán HachToan
         try:
-            hachtoan_pred = self.hachtoan_model.predict(df)
-            hachtoan_prob = self.hachtoan_model.predict_proba(df)
+            # Thử trực tiếp predict
+            try:
+                hachtoan_pred = self.hachtoan_model.predict(df)
+                hachtoan_prob = self.hachtoan_model.predict_proba(df)
+            except Exception as e:
+                logger.warning(f"Lỗi khi sử dụng predict trực tiếp: {str(e)}. Thử phương pháp thay thế.")
+
+                # Nếu predict thất bại, thử sử dụng các bước trong pipeline một cách thủ công
+                if hasattr(self.hachtoan_model, 'transform_df'):
+                    X_transformed = self.hachtoan_model.transform_df(df)
+
+                    # Lấy classifier từ pipeline
+                    if hasattr(self.hachtoan_model, 'steps') and len(self.hachtoan_model.steps) > 0:
+                        classifier = self.hachtoan_model.steps[-1][1]
+                        hachtoan_pred = classifier.predict(X_transformed)
+                        hachtoan_prob = classifier.predict_proba(X_transformed)
+                    else:
+                        raise ValueError("Không tìm thấy classifier trong pipeline")
+                else:
+                    raise ValueError("Không thể thực hiện dự đoán do mô hình không nhất quán")
 
             # Lấy giá trị dự đoán
             if isinstance(hachtoan_pred, np.ndarray):
@@ -310,9 +374,24 @@ class ModelPredictor:
                 df_with_hachtoan = df.copy()
                 df_with_hachtoan[self.primary_target] = result["prediction"]["HachToan"]
 
-                # Dự đoán MaHangHoa
-                mahanghua_pred = self.mahanghua_model.predict(df_with_hachtoan)
-                mahanghua_prob = self.mahanghua_model.predict_proba(df_with_hachtoan)
+                # Dự đoán MaHangHoa - sử dụng cơ chế dự phòng tương tự như HachToan
+                try:
+                    mahanghua_pred = self.mahanghua_model.predict(df_with_hachtoan)
+                    mahanghua_prob = self.mahanghua_model.predict_proba(df_with_hachtoan)
+                except Exception as e:
+                    logger.warning(f"Lỗi khi dự đoán MaHangHoa trực tiếp: {str(e)}. Thử phương pháp thay thế.")
+
+                    if hasattr(self.mahanghua_model, 'transform_df'):
+                        X_transformed = self.mahanghua_model.transform_df(df_with_hachtoan)
+
+                        if hasattr(self.mahanghua_model, 'steps') and len(self.mahanghua_model.steps) > 0:
+                            classifier = self.mahanghua_model.steps[-1][1]
+                            mahanghua_pred = classifier.predict(X_transformed)
+                            mahanghua_prob = classifier.predict_proba(X_transformed)
+                        else:
+                            raise ValueError("Không tìm thấy classifier trong pipeline MaHangHoa")
+                    else:
+                        raise ValueError("Không thể thực hiện dự đoán MaHangHoa")
 
                 # Lấy giá trị dự đoán
                 if isinstance(mahanghua_pred, np.ndarray):
@@ -321,7 +400,7 @@ class ModelPredictor:
                     mahanghua_value = mahanghua_pred
 
                 # Nếu có label encoder, chuyển đổi ngược lại
-                if self.label_encoders and 'mahanghua' in self.label_encoders:
+                if 'mahanghua' in self.label_encoders:
                     try:
                         mahanghua_value = self.label_encoders['mahanghua'].inverse_transform([mahanghua_value])[0]
                     except:
@@ -349,8 +428,26 @@ class ModelPredictor:
         # Phát hiện outlier nếu có mô hình
         if self.outlier_model is not None:
             try:
-                # Phát hiện outlier
-                outlier_scores = self.outlier_model.decision_function(df)
+                # Phát hiện outlier - thử với cơ chế dự phòng tương tự
+                try:
+                    outlier_scores = self.outlier_model.decision_function(df)
+                except Exception as e:
+                    logger.warning(f"Lỗi khi phát hiện outlier trực tiếp: {str(e)}. Thử phương pháp thay thế.")
+
+                    # Nếu là một pipeline, thử transform trước
+                    if hasattr(self.outlier_model, 'transform'):
+                        X_transformed = self.outlier_model.transform(df)
+                        # Nếu là IsolationForest, thử gọi decision_function trực tiếp
+                        if hasattr(self.outlier_model, 'decision_function'):
+                            outlier_scores = self.outlier_model.decision_function(X_transformed)
+                        else:
+                            # Không thể phát hiện outlier
+                            logger.warning("Không thể phát hiện outlier với phương pháp thay thế")
+                            return result
+                    else:
+                        # Không thể phát hiện outlier
+                        logger.warning("Không thể phát hiện outlier")
+                        return result
 
                 # Lấy ngưỡng từ cấu hình
                 threshold = self.model_config.get('outlier_detection', {}).get('threshold', 0.85)
@@ -375,6 +472,7 @@ class ModelPredictor:
                 # Không raise lỗi, vì phát hiện outlier không bắt buộc
 
         return result
+
 
 def predict_single_sample(customer_id: str, data: Dict[str, Any], models_dir: str = None,
                           version: str = 'latest') -> Dict[str, Any]:
